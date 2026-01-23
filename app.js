@@ -2484,17 +2484,93 @@ function toggleFavorite(url) {
   renderChannels();
 }
 
-// ================= DRAWER =================
+// ================= DRAWER (UPDATED) =================
 drawerHandle.onclick = () => (drawerOpen ? closeDrawer() : openDrawer());
+
 function openDrawer() {
   drawer.style.transform = "translateY(0)";
   drawerOpen = true;
 }
+
 function closeDrawer() {
-  drawer.style.transform = "translateY(55vh)";
+  // Check if mobile (screen width < 1024px)
+  if (window.innerWidth < 1024) {
+    drawer.style.transform = "translateY(100%)"; // Fully hide on mobile
+  } else {
+    drawer.style.transform = "translateY(0)"; // Keep visible on desktop
+  }
   drawerOpen = false;
 }
 
+// ================= FULLSCREEN =================
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+const videoContainer = document.querySelector(".relative.w-full.h-full");
+
+fullscreenBtn.onclick = () => {
+  if (!document.fullscreenElement) {
+    if (videoContainer.requestFullscreen) {
+      videoContainer.requestFullscreen();
+    } else if (videoContainer.webkitRequestFullscreen) {
+      videoContainer.webkitRequestFullscreen();
+    } else if (videoContainer.msRequestFullscreen) {
+      videoContainer.msRequestFullscreen();
+    }
+    fullscreenBtn.querySelector("i").setAttribute("data-lucide", "minimize");
+    lucide.createIcons();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+    fullscreenBtn.querySelector("i").setAttribute("data-lucide", "maximize");
+    lucide.createIcons();
+  }
+};
+
+// Update icon when fullscreen changes
+document.addEventListener("fullscreenchange", () => {
+  if (!document.fullscreenElement) {
+    fullscreenBtn.querySelector("i").setAttribute("data-lucide", "maximize");
+    lucide.createIcons();
+  }
+});
+
+// ================= SCREEN TAP TO SHOW DRAWER =================
+const playerArea = document.querySelector(".relative.flex-1");
+let tapTimeout;
+
+// Show drawer on screen tap when it's hidden
+playerArea.addEventListener("click", (e) => {
+  // Don't trigger if clicking on buttons or controls
+  if (e.target.closest("button") || e.target.closest("#drawer")) {
+    return;
+  }
+
+  // Only on mobile
+  if (window.innerWidth < 1024 && !drawerOpen) {
+    openDrawer();
+
+    // Auto-hide after 5 seconds of no interaction
+    clearTimeout(tapTimeout);
+    tapTimeout = setTimeout(() => {
+      if (drawerOpen) {
+        closeDrawer();
+      }
+    }, 5000);
+  }
+});
+
+// Clear auto-hide timeout if user interacts with drawer
+drawer.addEventListener("touchstart", () => {
+  clearTimeout(tapTimeout);
+});
+
+drawer.addEventListener("mousedown", () => {
+  clearTimeout(tapTimeout);
+});
 // ================= MODAL =================
 brokenBtn.onclick = () => {
   brokenList.innerHTML = "";
