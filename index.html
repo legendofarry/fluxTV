@@ -7,7 +7,7 @@
     <title>StreamVibe Pro | IPTV</title>
 
     <!-- Montserrat Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Icons & Frameworks -->
@@ -16,195 +16,353 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <style>
+        /* --- ANIMATED BACKGROUND --- */
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         :root {
-            --bg-dark: #020617;
-            --accent: #6366f1;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --neon-blue: #4f46e5;
+            --neon-pink: #ec4899;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-dark);
-            color: #f8fafc;
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+            color: #fff;
             margin: 0;
-            padding: 0;
             overflow: hidden;
         }
 
-        .glass {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* --- GLASSMORPHISM UTILS --- */
+        .glass-panel {
+            background: rgba(17, 25, 40, 0.6);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- CHANNEL GRID UI --- */
+        #channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            padding-bottom: 80px;
+            /* Space for mobile bottom */
+        }
+
+        /* Redesigning the channel item (assuming app.js creates divs with class .channel-item) */
         .channel-item {
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 80px;
+            animation: fadeInUp 0.5s ease forwards;
         }
 
         .channel-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.1);
-            transform: scale(0.98);
+            transform: translateY(-5px) scale(1.02);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
+        /* Active State */
         .channel-item.active {
-            background: linear-gradient(90deg,
-                    rgba(99, 102, 241, 0.15) 0%,
-                    rgba(168, 85, 247, 0.15) 100%);
-            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(168, 85, 247, 0.8));
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 25px rgba(129, 140, 248, 0.4);
         }
 
+        .channel-item.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1h2v2H1V1zm4 0h2v2H5V1zm4 0h2v2H9V1z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        /* Scrollbar */
         .custom-scroll::-webkit-scrollbar {
-            width: 4px;
+            width: 6px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
         }
 
         .custom-scroll::-webkit-scrollbar-thumb {
-            background: #334155;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
         }
 
-        .switch input:checked~.dot {
-            transform: translateX(100%);
-            background-color: #6366f1;
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
         }
 
-        /* Modal */
+        /* Toggle Switch Redesign */
+        .switch input:checked~.dot {
+            transform: translateX(100%);
+            background-color: #fff;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        .switch-bg {
+            background: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s;
+        }
+
+        .switch input:checked~.switch-bg {
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+        }
+
+        /* Modal Redesign */
         #brokenModal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
             z-index: 100;
             justify-content: center;
             align-items: center;
+            animation: fadeIn 0.2s ease;
         }
 
         #brokenModalContent {
-            background: #111827;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            max-width: 400px;
+            background: linear-gradient(145deg, #1e1b4b, #312e81);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 450px;
             width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        #brokenModalContent h2 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        #brokenModalContent button.closeModal {
-            float: right;
-            background: transparent;
-            border: none;
-            color: #f87171;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        @media (min-width: 768px) {
-            #drawer {
-                width: 350px;
-                flex-shrink: 0;
-            }
+        /* Glow Text */
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
 
-<body class="flex flex-col h-screen w-full overflow-hidden">
+<body class="flex flex-col h-screen w-full overflow-hidden text-slate-100">
 
-    <!-- ================= PLAYER ================= -->
-    <div class="relative flex-1 bg-black flex flex-col">
+    <!-- ================= PLAYER AREA ================= -->
+    <div class="relative flex-1 flex flex-col items-center justify-center p-0 lg:p-4 transition-all duration-500">
 
-        <!-- Top Bar -->
-        <div
-            class="absolute top-0 left-0 right-0 p-4 z-30 flex justify-between items-center bg-gradient-to-b from-black/70 to-transparent">
-            <div class="flex items-center gap-3">
-                <div
-                    class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                    <i data-lucide="tv" class="w-5 h-5 text-white"></i>
+        <!-- Video Container with Glow -->
+        <div class="relative w-full h-full lg:rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 group">
+
+            <!-- Top Overlay -->
+            <div
+                class="absolute top-0 left-0 right-0 p-6 z-30 bg-gradient-to-b from-black/90 via-black/50 to-transparent flex justify-between items-start transition-transform duration-300 group-hover:translate-y-0 translate-y-[-100%] lg:translate-y-0">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/30 animate-[float_4s_ease-in-out_infinite]">
+                        <i data-lucide="zap" class="w-6 h-6 text-white fill-white"></i>
+                    </div>
+                    <div>
+                        <h1
+                            class="text-lg font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+                            STREAMVIBE
+                        </h1>
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            <p id="current-channel-name"
+                                class="text-xs font-semibold text-indigo-300 tracking-widest uppercase">
+                                Select Channel
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-sm font-bold tracking-tight">
-                        STREAMVIBE <span class="text-indigo-400">PRO</span>
-                    </h1>
-                    <p id="current-channel-name" class="text-[10px] text-slate-400 uppercase tracking-widest">
-                        No Channel Selected
-                    </p>
+
+                <!-- Quality Badge -->
+                <div id="quality"
+                    class="glass-card px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest text-white border border-white/20 shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+                    HD
                 </div>
             </div>
 
-            <!-- Quality -->
-            <div id="quality"
-                class="bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-[10px] font-bold text-indigo-300">
-                AUTO
-            </div>
-        </div>
+            <!-- Video Element -->
+            <video id="video" class="w-full h-full object-contain bg-black"></video>
 
-        <!-- Video -->
-        <div class="flex-1 relative flex items-center justify-center overflow-hidden">
-            <video id="video" class="w-full h-full object-contain"></video>
+            <!-- Bottom decorative glow -->
+            <div
+                class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-indigo-900/20 to-transparent pointer-events-none">
+            </div>
         </div>
     </div>
 
-    <!-- ================= DRAWER ================= -->
+    <!-- ================= DRAWER / SIDEBAR ================= -->
+    <!-- Transformed into a Glass Panel -->
     <div id="drawer"
-        class="fixed bottom-0 left-0 right-0 h-[60vh] glass border-t border-white/10 flex flex-col lg:static lg:h-full lg:border-t-0 lg:border-l">
+        class="fixed bottom-0 left-0 right-0 h-[65vh] lg:static lg:h-auto lg:w-[400px] glass-panel z-40 flex flex-col transition-all duration-300 rounded-t-3xl lg:rounded-none lg:rounded-l-3xl border-t lg:border-t-0 lg:border-l border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.4)]">
 
-        <!-- Handle -->
-        <div id="drawerHandle" class="lg:hidden flex flex-col items-center py-3 cursor-pointer">
-            <div class="w-12 h-1.5 bg-slate-700 rounded-full mb-1"></div>
-            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">
-                Swipe Up For Channels
-            </span>
+        <!-- Mobile Handle -->
+        <div id="drawerHandle" class="lg:hidden flex justify-center pt-4 pb-2 cursor-pointer w-full"
+            onclick="toggleDrawer()">
+            <div class="w-16 h-1.5 bg-white/20 rounded-full hover:bg-white/40 transition-colors"></div>
         </div>
 
-        <!-- Controls -->
-        <div class="px-4 py-3 space-y-3">
-            <div class="flex justify-between items-center">
-                <div class="relative flex-1 mr-2">
-                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500"></i>
-                    <input id="search" class="w-full bg-slate-950/50 border border-slate-800 rounded-2xl py-2 pl-10 pr-3 text-sm
-                          focus:ring-2 focus:ring-indigo-500/50 outline-none placeholder:text-slate-600"
-                        placeholder="Search channels..." />
+        <!-- Controls Header -->
+        <div class="p-6 space-y-5 flex-shrink-0 relative z-10">
+            <!-- Search Bar -->
+            <div class="relative group">
+                <div
+                    class="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500">
                 </div>
-                <button id="brokenBtn"
-                    class="px-3 py-2 bg-red-600 hover:bg-red-700 rounded text-xs font-bold ml-2">Broken
-                    Channels</button>
+                <div
+                    class="relative flex items-center bg-gray-900 rounded-2xl border border-white/10 focus-within:border-indigo-500/50 transition-colors">
+                    <i data-lucide="search" class="ml-4 w-5 h-5 text-indigo-400"></i>
+                    <input id="search"
+                        class="w-full bg-transparent border-none py-3.5 pl-3 pr-4 text-sm text-white focus:ring-0 placeholder:text-slate-500 font-medium"
+                        placeholder="Find your vibe..." />
+                </div>
             </div>
 
-            <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-slate-400">Hide Broken Channels</span>
-                <label class="switch flex items-center cursor-pointer">
-                    <div class="relative">
+            <!-- Toggles & Filters -->
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-3 glass-card px-3 py-2 rounded-xl">
+                    <label class="switch flex items-center cursor-pointer relative">
                         <input type="checkbox" id="hideBroken" class="sr-only">
-                        <div class="block bg-slate-800 w-10 h-6 rounded-full border border-slate-700"></div>
-                        <div class="dot absolute left-1 top-1 bg-slate-400 w-4 h-4 rounded-full transition-all"></div>
-                    </div>
-                </label>
+                        <div class="switch-bg block bg-slate-700/50 w-10 h-6 rounded-full border border-white/10"></div>
+                        <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-all shadow-sm">
+                        </div>
+                    </label>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300">Hide Broken</span>
+                </div>
+
+                <button id="brokenBtn"
+                    class="px-4 py-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 hover:from-red-500 hover:to-orange-500 border border-red-500/30 rounded-xl text-xs font-bold text-red-200 hover:text-white transition-all duration-300 shadow-[0_0_10px_rgba(239,68,68,0.1)]">
+                    Reported
+                </button>
             </div>
 
-            <p id="channel-count" class="text-xs text-slate-400">Channels: 0</p>
+            <div class="flex justify-between items-end border-b border-white/5 pb-2">
+                <h2
+                    class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-300">
+                    Channels</h2>
+                <p id="channel-count" class="text-[10px] font-mono text-slate-400 bg-white/5 px-2 py-1 rounded">0 LIVE
+                </p>
+            </div>
         </div>
 
-        <!-- Channel List -->
-        <div id="channels" class="flex-1 overflow-y-auto px-4 pb-4 custom-scroll space-y-2"></div>
+        <!-- Channel Grid -->
+        <div id="channels" class="flex-1 overflow-y-auto px-6 custom-scroll pb-20 lg:pb-6">
+            <!-- Cards are injected here via JS. 
+                 CSS Grid handles the layout automatically. -->
+        </div>
     </div>
 
     <!-- Broken Channels Modal -->
-    <div id="brokenModal" class="flex">
-        <div id="brokenModalContent">
-            <button class="closeModal">X</button>
-            <h2>Broken Channels</h2>
-            <div id="brokenList" class="space-y-2"></div>
+    <div id="brokenModal">
+        <div id="brokenModalContent" class="relative">
+            <button class="closeModal absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+                <i data-lucide="x-circle" class="w-6 h-6"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-6">
+                <i data-lucide="alert-triangle" class="text-red-400"></i>
+                <h2 class="text-xl font-bold text-white">Broken Links</h2>
+            </div>
+            <div id="brokenList" class="space-y-3 max-h-[300px] overflow-y-auto custom-scroll">
+                <!-- Broken Items -->
+            </div>
         </div>
     </div>
 
-    <!-- Icons init -->
     <script>
         lucide.createIcons();
+
+        // Simple logic to add mobile swipe feel (optional visual enhancement)
+        const handle = document.getElementById('drawerHandle');
+        let isOpen = false;
+
+        // On mobile, clicking handle toggles height
+        handle.addEventListener('click', () => {
+            if (window.innerWidth < 1024) {
+                if (!isOpen) {
+                    drawer.style.height = '90vh';
+                    isOpen = true;
+                } else {
+                    drawer.style.height = '65vh';
+                    isOpen = false;
+                }
+            }
+        });
     </script>
 
     <script src="app.js"></script>

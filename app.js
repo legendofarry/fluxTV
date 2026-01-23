@@ -1,5 +1,5 @@
 // ================= CONFIG =================
-const DEV_MODE = true; // false in production
+const DEV_MODE = false; // false in production
 
 // 🔒 PERMANENT HARD BLOCK (NEVER SHOWN, EVER)
 const PERMANENT_BLOCKLIST = new Set([
