@@ -2252,6 +2252,586 @@ const PERMANENT_BLOCKLIST = new Set([
   "http://183.207.249.15/PLTV/4/224/3221225933/index.m3u8",
   "http://livealone302.iqilu.com/iqilu/sepd.m3u8",
   "https://qiniup-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8",
+  "http://1music.hu/1music.m3u8",
+  "https://3abn.bozztv.com/3abn1/PraiseHim/smil:PraiseHim.smil/playlist.m3u8",
+  "https://stream.4fun.tv:8888/hls/4f_high/index.m3u8",
+  "https://4kuhls.persiana.live/hls/stream.m3u8",
+  "https://stream10.xdevel.com/video1s976543-1932/stream/playlist.m3u8",
+  "https://fucking-tv-ott.keralive.workers.dev/mumt03/7SMUSIC/index.m3u8",
+  "https://stream10.xdevel.com/video0s977798-2239/stream/playlist.m3u8",
+  "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/9x-jalwa/master.m3u8",
+  "https://9xjio.wiseplayout.com/9X_Jhakaas/master.m3u8",
+  "https://9xjio.wiseplayout.com/9X_Tashan/master.m3u8",
+  "https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/9xm/23886666-8fc5-470f-aab1-bd637ed607b1/3.m3u8",
+  "https://origin.dpsgo.com/ssai/event/Nftd0fM2SXasfDlRphvUsg/master.m3u8",
+  "https://dvr3.vokkavideo.xyz/CRINGETVHD/index.m3u8",
+  "https://30a-tv.com/music.m3u8",
+  "http://wms.shared.streamshow.it/canale51/canale51/playlist.m3u8",
+  "https://585b674743bbb.streamlock.net/9050/9050/playlist.m3u8",
+  "http://k3.usastreams.com/CableLatino/88stereo/playlist.m3u8",
+  "https://live2.tensila.com/pearl-v-1.pearlfm/hls/live/mystream.m3u8",
+  "https://stream.sen-gt.com/A2iMusic/myStream/playlist.m3u8",
+  "http://103.140.254.2:3500/live/3395.m3u8",
+  "https://d2hng5r56zpsbw.cloudfront.net/out/v1/9c4c990f44bb4767bb46271f326dd574/index.m3u8",
+  "https://streamtv.mediasector.es/hls/activatv/index.m3u8",
+  "https://live.acwugtv.com/hls/stream.m3u8",
+  "https://tls-cl.cdnz.cl/aeradio/live/playlist.m3u8",
+  "https://bozztv.com/1gbw5/tintv2/tintv2/playlist.m3u8",
+  "https://streaming-a-1035.cdn.nextologies.com/6zj8y5nemi8a32vyjjbkv0oqx/77pcakd8reik3g8qdqnexlkmq/playlist.m3u8",
+  "https://albportal.net/albkanalemusic.m3u8",
+  "https://alternatv.ar/stream/hls/live.m3u8",
+  "http://31.148.48.15/A1/index.m3u8",
+  "http://mn-nl.mncdn.com/amusictv/amusicsrt.stream/playlist.m3u8",
+  "https://60efd7a2b4d02.streamlock.net/a_kaernten/ngrp:livestream_all/playlist.m3u8",
+  "https://60efd7a2b4d02.streamlock.net/a_steiermark/ngrp:livestream_all/playlist.m3u8",
+  "https://5857db5306b83.streamlock.net/antennevorarlberg-live/_definst_/mp4:livestream/playlist.m3u8",
+  "http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8",
+  "https://vdo.voxhdnet.com:3159/stream/play.m3u8",
+  "https://arymusik.aryzap.com/3fd38b2c62d0c3bbd74aedabb533c03a/6459fa78/v1/01847ac7a4930b8ed5aa6ed04aba/01847ac8f5f70b8ed5aa6ed04abd/main.m3u8",
+  "https://atomic.streamnet.ro/academia.m3u8",
+  "https://atomic.streamnet.ro/atomictv.m3u8",
+  "https://hls.avang.live/hls/stream.m3u8",
+  "https://fl1.moveonjoy.com/Axs_TV/index.m3u8",
+  "https://streamyes.alsolnet.com/azaharesfm/live/playlist.m3u8",
+  "http://103.167.255.18:8085/play/a0he/index.m3u8",
+  "https://cdnb4u.wiseplayout.com/B4U_Music/master.m3u8",
+  "https://mcncdndigital.com/balleballetv/index.m3u8",
+  "https://panik.cast-control.eu:1936/Admin_1/Admin_1/playlist.m3u8",
+  "https://rtmp.streams.ovh:1936/barazarelax/barazazararelax/barazarelax/playlist.m3u8",
+  "https://eco.streams.ovh/BarazaTV/BarazaTV/playlist.m3u8",
+  "https://rtmp.streams.ovh:1936/barazarelax/barazarelax/playlist.m3u8",
+  "https://raw.githubusercontent.com/taodicakhia/IPTV_Exception/master/channels/af/tolomusic.m3u8",
+  "https://tv.beatfm.nl/live.m3u8",
+  "https://videostream.shockmedia.com.ar:19360/beatsradio/beatsradio.m3u8",
+  "https://bel-live-hls.akamaized.net/hls/live/2038650/BEL-Live-HLS/master.m3u8",
+  "https://m1b2.worldcast.tv/dancetelevisionone/dancetelevisionone.m3u8",
+  "https://bibeltv03.iptv-playoutcenter.de/bibeltv03/bibeltv03.stream_1/playlist.m3u8",
+  "https://fl.biztv.media/music_720_QAKpGmVUjaPApCNjpsgBxrdqNihAkl/index.m3u8",
+  "https://livestream2.bokradio.co.za/hls/Bok5c.m3u8",
+  "https://video1.getstreamhosting.com:1936/8212/8212/playlist.m3u8",
+  "http://31.148.48.15/Bridge_TV/index.m3u8",
+  "http://31.148.48.15/Bridge_TV_Classic/index.m3u8",
+  "http://31.148.48.15/Bridge_TV_HD/index.m3u8",
+  "http://31.148.48.15/Bridge_TV_Dance/index.m3u8",
+  "https://cloud.fastchannel.es/manifiest/hls/prog9/btatv.m3u8",
+  "https://panel.btb.j00r.us/memfs/ebaffae6-0086-49d7-843d-57f2c561de86.m3u8",
+  "https://busuioctv.iforward.eu/hls/busuioc.m3u8",
+  "https://cloudvideo.servers10.com:8081/8004/index.m3u8",
+  "https://cmc-ono.amagi.tv/hls/amagi_hls_data_cmcAAAAAA-cmc-ono/CDN/playlist.m3u8",
+  "https://live20.bozztv.com/giatv/giatv-KMKTV/KMKTV/chunks.m3u8",
+  "https://vcp.myplaytv.com/cantinatv/cantinatv/playlist.m3u8",
+  "http://123.175.209.52:9003/hls/12/index.m3u8",
+  "http://123.175.209.52:9003/hls/16/index.m3u8",
+  "https://tv.city.bg/play/tshls/citytv/index.m3u8",
+  "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5f779951372da90007fd45e8/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c280711-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=1c3ac7db-5cfe-4d39-aec3-70a684e58c38",
+  "https://d1j2csarxnwazk.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-uze1m6xh4fiyr-ssai-prd/master.m3u8",
+  "https://stream.cmctv.hr:49998/cmc/live.m3u8",
+  "https://fl1.moveonjoy.com/CMT/index.m3u8",
+  "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5f68f53eb1e5800007390bf8/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c280712-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=bd328c28-b23b-4f85-9b18-9d73786f7109",
+  "https://5929b138b139d.streamlock.net/CompanyTV/smil:CompanyTV.smil/master.m3u8",
+  "https://stream8.mexiserver.com:19360/conectatvx/conectatvx.m3u8",
+  "https://live2.tensila.com/cool-v-1.arubara/hls/master.m3u8",
+  "https://rtsc3video.akamaized.net/hls/live/2042837/c3video/3/playlist.m3u8",
+  "https://cloud.tvomix.com/CUMBIAMIX/index.m3u8",
+  "https://live20.bozztv.com/akamaissh101/ssh101/d3tvnet/playlist.m3u8",
+  "https://5eaccbab48461.streamlock.net:1936/dancefm_1/dancefm_1/playlist.m3u8",
+  "http://dancehits80.denvs.ru:8080/index.m3u8",
+  "https://m2b2.worldcast.tv:7443/dancetelevisionfour/dancetelevisionfour.m3u8",
+  "https://mbit1.worldcast.tv/dancetelevisioneight/multibit.m3u8",
+  "https://m1b2.worldcast.tv/dancetelevisiontwo/dancetelevisiontwo.m3u8",
+  "https://mbit1.worldcast.tv/dancetelevisionseven/multibit.m3u8",
+  "https://m2b2.worldcast.tv:7443/dancetelevisionfive/dancetelevisionfive.m3u8",
+  "https://mbit1.worldcast.tv/dancetelevisionnine/multibit.m3u8",
+  "https://mbit1.worldcast.tv/dancetelevisionsix/multibit.m3u8",
+  "https://m2b2.worldcast.tv:7443/dancetelevisionthree/dancetelevisionthree.m3u8",
+  "https://swrdasdingvr-hls.akamaized.net/hls/live/2018681/dasdingvr/master.m3u8",
+  "https://dbmtv.vedge.infomaniak.com/livecast/dbmtv/playlist.m3u8",
+  "https://eu-nl-012.worldcast.tv/dancetelevisiontwo/dancetelevisiontwo.m3u8",
+  "https://59d39900ebfb8.streamlock.net/saintlouisltv/saintlouisltv/playlist.m3u8",
+  "https://sdn-global-live-streaming-packager-cache.3qsdn.com/64733/64733_264_live.m3u8",
+  "https://jmp2.uk/stvp-CHAJ0500413A",
+  "https://sdn-global-live-streaming-packager-cache.3qsdn.com/13456/13456_264_live.m3u8",
+  "https://sdn-global-live-streaming-packager-cache.3qsdn.com/65183/65183_264_live.m3u8",
+  "https://cdn-1.pishow.tv/live/1291/master.m3u8",
+  "https://cdn-1.pishow.tv/live/1456/master.m3u8",
+  "https://rds3.desdeparaguay.net/dismartv/dismartv/playlist.m3u8",
+  "https://viamotionhsi.netplus.ch/live/eds/dmsat/browser-dash/dmsat.mpd",
+  "https://d-m-f.iptv-playoutcenter.de/dmf/dmf1/playlist.m3u8",
+  "https://live.duhnet.tv/S2/HLS_LIVE/dreamturknp/playlist.m3u8",
+  "https://rpn.bozztv.com/ebstv/ebsmusika/index.m3u8",
+  "https://video.misistemareseller.com/ecuastereotv/ecuastereotv/playlist.m3u8",
+  "https://pacific.direcnode.com:3353/live/ecuamundotvlive.m3u8",
+  "https://9090video.mobtada.com/hls/stream.m3u8",
+  "https://tv.wracanal10.com:3025/live/elsoltvlive.m3u8",
+  "https://til.pp.ua:3093/live/ellinikosfmlive.m3u8",
+  "https://backend.energeek.cl/webtv/egradioweb/index.m3u8?token=ZZDemoIPTVGH",
+  "https://cc-szivnms4rlah6.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-szivnms4rlah6/WWBI/Amagi/ETV_Music_IN/playlist.m3u8",
+  "http://178.33.224.197:1935/euroindiemusic/euroindiemusic/playlist.m3u8",
+  "http://31.148.48.15/Europa_Plus_HD/index.m3u8",
+  "https://ythls.armelin.one/channel/UCXxTnMoETkhNTmsqZc0JMhQ.m3u8",
+  "https://www.streaming507.net:19360/videofabulosa/videofabulosa.m3u8",
+  "https://shls-live-enc.edgenextcdn.net/out/v1/bba3ef00b71b470fa955d93a9ca8c277/index.m3u8",
+  "https://rp.tactivemedia.com/palestiniantv_source/live/playlist.m3u8",
+  "https://tv2.fastcast4u.com:3310/live/famatvlive.m3u8",
+  "https://rjr-fame.akamaized.net/hls/live/2033820/RJR_FAME/master.m3u8",
+  "http://159.203.148.226/live/farra.m3u8",
+  "https://media.finest.tv/hls/live.m3u8",
+  "https://live20.bozztv.com/akamaissh101/ssh101/fsradiotv/playlist.m3u8",
+  "https://stream2.xdevel.com/video0s975817-1183/stream/playlist.m3u8",
+  "https://video2.makrodigital.com/fmmundo/fmmundo/playlist.m3u8",
+  "http://tv1.intv.mk:1935/live2/folkklub/index.m3u8",
+  "https://stream.nasatv.com.mk/folktv/hls/folktv_live.m3u8",
+  "https://cdne.folxplay.tv/folx-trz/streams/ch-4/master.m3u8",
+  "https://cdne.folxplay.tv/folx-trz/streams/ch-5/master.m3u8",
+  "https://s2.tvdatta.com:3307/hybrid/play.m3u8",
+  "https://stream8.cinerama.uz/1018/playlist.m3u8",
+  "https://video.misistemareseller.com/Fuegotv/Fuegotv/playlist.m3u8",
+  "https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/funradiofr.m3u8",
+  "https://edge20.vedge.infomaniak.com/livecast/ik:fusiontv/manifest.m3u8",
+  "https://stream.castr.com/6463248048d6cd3e143655b2/live_43351ad0f3b411ed81c78fcc31887c54/index.fmp4.m3u8",
+  "http://66.102.120.18:8000/play/a044/index.m3u8",
+  "https://wild-dawn-81ef.srmhoburfqyupzwxbu.workers.dev/?url=https://ca-rt.onetv.app/gemmifa/index-0.m3u8",
+  "https://still-mud-3642.nqanzvyuupxwcahtfq.workers.dev/?url=https://ca-rt.onetv.app/gemmifaplus/index-0.m3u8",
+  "https://live20.bozztv.com/akamaissh101/ssh101/gextvaccess/playlist.m3u8",
+  "https://video.uitzending.tv:19360/gigantfm/gigantfm.m3u8",
+  "https://livechannel.mdc.akamaized.net/stitch/livechannel/1341/master1400000.m3u8;session=live_stream_1341",
+  "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6192396135f3910007fc5fc7/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=1b1dfff0-4b81-11ef-a8ac-e146e4e7be02&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=95d4ef6d-a51e-4ee2-b6d2-bff9e219717f",
+  "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6192396135f3910007fc5fc7/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=84ad6806-4b92-11ef-aece-533610f1ea34&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=9ec1275e-0641-49e2-81e6-6d37a37b7bd3",
+  "http://148.251.76.72:8081/goodsound/goodsound.sdp/playlist.m3u8",
+  "https://panel.freedomflixtv.org:3764/hybrid/play.m3u8",
+  "https://mgugaklive.nowcdn.co.kr/gugakvideo/gugakvideo.stream/playlist.m3u8",
+  "http://hitmusic.hu/hitmusic.m3u8",
+  "https://streamer1.connectto.com/HIGHVISION_WEB_1205/index.m3u8",
+  "https://streamer2.nexgen.bz/13-HITZ/index.m3u8",
+  "https://video1.getstreamhosting.com:1936/8326/8326/playlist.m3u8",
+  "https://streammix.alsolnet.com/hyperadio/live/playlist.m3u8",
+  "https://vdo2.pro-fhi.net:3769/stream/play.m3u8",
+  "https://online.tvimpact.live/hls/dancetv.m3u8",
+  "https://online.tvimpact.live/hls/impact_tv.m3u8",
+  "https://s2.tvdatta.com:3753/hybrid/play.m3u8",
+  "http://tv1.intv.mk:1935/live/intv/index.m3u8",
+  "https://rtmp.info/iqtv/envivo/playlist.m3u8",
+  "https://segment.yuppcdn.net/140622/isaiaruvi/playlist.m3u8",
+  "http://80.241.215.175:1935/isangostar/isangostar/playlist.m3u8",
+  "https://vcp.myplaytv.com/italianissimo/italianissimo/playlist.m3u8",
+  "https://ca1.buximedia.com/itv/arabic/tracks-v1a1/mono.m3u8",
+  "https://ca1.buximedia.com/itv/indian/tracks-v1a1/mono.m3u8",
+  "https://ca1.buximedia.com/itv/latin/tracks-v1a1/mono.m3u8",
+  "https://ca1.buximedia.com/itv/persian/tracks-v1a1/mono.m3u8",
+  "https://ca1.buximedia.com/itv/turkish/tracks-v1a1/mono.m3u8",
+  "https://video1.getstreamhosting.com:1936/8244/8244/playlist.m3u8",
+  "http://66.102.120.18:8000/play/a052/index.m3u8",
+  "http://streaming.toutech.net:1935/live/mp4:jawharafm.sdp/playlist.m3u8",
+  "https://dpp-streamlive-plain.medialaancdn.be/joe_kijklive/plain/hls_hd.m3u8",
+  "https://livecdn.live247stream.com/joomusic/tv/playlist.m3u8",
+  "https://playlist.fasttvcdn.com/pl/cc0blorawy1ibohhrupraa/Song/playlist.m3u8",
+  "https://streamer.radiotaajuus.fi/memfs/47f113bf-04ea-493b-a9d4-52945fd9db31.m3u8",
+  "https://juicex.nz/hls/mystream.m3u8",
+  "https://liveovh011.cda.pl/enc117/topkidsjrhdraw/topkidsjrhdraw.m3u8",
+  "https://streamtv.intervenhosting.net:3718/live/kandelamedioslive.m3u8",
+  "https://live-player.egostreaming.pe/karibenatv_685a-pe-a5676-584412/index.fmp4.m3u8",
+  "https://playout395.livestreamingcdn.com/live/Stream1/playlist.m3u8",
+  "https://58f12ffd2447a.streamlock.net/KKTVNapoli/livestream/playlist.m3u8",
+  "https://stream.cmctv.hr:49998/kit/live.m3u8",
+  "https://giatv.bozztv.com/giatv/giatv-kpoptvplay/kpoptvplay/playlist.m3u8",
+  "https://dogus-live.daioncdn.net/kralpoptv/playlist.m3u8",
+  "https://dogus-live.daioncdn.net/kraltv/playlist.m3u8",
+  "https://bitcdn-kronehit.bitmovin.com/v2/hls/playlist.m3u8",
+  "https://6476e46b58f91.streamlock.net/music/MUSIC2402/playlist.m3u8",
+  "http://195.23.211.179:1935/kmusic/smil:kmusic.smil/playlist.m3u8",
+  "https://6019dcac4147f.streamlock.net:9443/la98/Invosa/playlist.m3u8",
+  "https://eu1.servers10.com:8081/8004/index.m3u8",
+  "https://streamlov.alsolnet.com/hermandadsalsera/live/playlist.m3u8",
+  "https://mdstrm.com/live-stream-playlist/58d191f07290fbb058025843.m3u8",
+  "https://server40.servistreaming.com:3477/stream/play.m3u8",
+  "https://ss2.tvrdomi.com:1936/lamiatv/lamiatv/playlist.m3u8",
+  "https://movil.ejeserver.com/live/lamoradatv.m3u8",
+  "https://eu1.servers10.com:8081/8068/index.m3u8",
+  "https://streamyes.alsolnet.com/quebuenaatlanta/live/index.m3u8",
+  "https://5fa5de1a545ae.streamlock.net/8010/8010/playlist.m3u8",
+  "https://cootv.cootel.com.ni:8095/Canal22_CooTel/playlist.m3u8",
+  "https://59d39900ebfb8.streamlock.net/top102/top102/playlist.m3u8",
+  "https://59d39900ebfb8.streamlock.net/top107/top107/playlist.m3u8",
+  "https://urbanrevolution.es:8443/live/TV/playlist.m3u8",
+  "https://ss2.tvrdomi.com:1936/lavozdeltropico/lavozdeltropico/playlist.m3u8",
+  "https://stream.eleden.com/livelax/ngrp:livelax_all/playlist.m3u8",
+  "https://cdn.streamingcpanel.com:3784/live/latinzonetvlive.m3u8",
+  "https://h056.video-stream-hosting.de/easycast11-live/_definst_/mp4:livestreamhd2/playlist.m3u8?ref=",
+  "https://stmvideo2.livecastv.com/lax953/lax953/playlist.m3u8",
+  "https://cloud2.streaminglivehd.com:1936/liratv/liratv/playlist.m3u8",
+  "https://live.creacast.com/littoralfm-ch1/stream/playlist.m3u8",
+  "https://media.streambrothers.com:1936/8014/8014/playlist.m3u8",
+  "https://livestream.liveone.com/lc1/p1.m3u8",
+  "https://5ca3e84a76d30.streamlock.net/tvlobo/videotvlobo/playlist.m3u8",
+  "https://livefta.malimarcdn.com/ftaedge00/lookthoongtv.sdp/playlist.m3u8",
+  "https://stream.nasatv.com.mk/lovetv/hls/lovetv_live.m3u8",
+  "https://stream-live.lrt.lt/klasika/master.m3u8",
+  "https://stream-live.lrt.lt/opus/master.m3u8",
+  "https://servervideo.intermediacolombia.com:19360/kychbbfhdz/kychbbfhdz.m3u8",
+  "https://live.m2.tv/hls3/stream.m3u8",
+  "https://4c4b867c89244861ac216426883d1ad0.msvdn.net/live/S62628868/uhdWBlkC1AoO/playlist.m3u8",
+  "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/m-plus/master.m3u8",
+  "https://m-1.data.lt/m-1/smil:m-1.smil/playlist.m3u8",
+  "http://live.streams.ovh:1935/foxtv/foxtv/playlist.m3u8",
+  "https://edge12.vedge.infomaniak.com/livecast/ik:madrasfmtv/manifest.m3u8",
+  "https://streaming.magentamusik.de/csm/573870/magentamusik1/index.m3u8",
+  "https://bss1.neterra.tv/magictv/magictv.m3u8",
+  "https://tv.broadcasting.ro/magictv/925f90db-5c88-4190-a53d-5163cdffe6f4.m3u8",
+  "https://ss3.domint.net:3138/mtv_str/maimon/playlist.m3u8",
+  "https://shls-live-mood-ak.akamaized.net/out/v1/8e2419c6c7494dbba478be025af490ee/index.m3u8",
+  "https://live.obslivestream.com/makaomux/tracks-v2a1/playlist.m3u8",
+  "https://ffs.gulfsat.com/Marina-TV-HD/index.m3u8",
+  "https://vcp4.myplaytv.com:1936/mas23/mas23/playlist.m3u8",
+  "https://vivo.solumedia.com:19360/masfm/masfm.m3u8",
+  "https://movil.ejeserver.com/live/masmusica.m3u8",
+  "https://mastershowtv.videovox.pw/master6123/master6123/playlist.m3u8",
+  "https://streamer2.nexgen.bz/14-MAX/index.m3u8",
+  "https://cdn-us-east-prod-ingest-infra-dacast-com.akamaized.net/624ff8f9-db18-da92-4d42-896fa2ff3eb3/source/index.m3u8",
+  "https://dbbv9umqcd7cs.cloudfront.net/out/v1/db15b75c3cc0400c91961468d6a232ac/index.m3u8",
+  "https://d2lfa0y84k5bwn.cloudfront.net/out/v1/86dd4506a70c4d7fb35e2ab50296d9a3/index.m3u8",
+  "http://54.36.110.140/live3/live3.m3u8",
+  "https://hdbox.chunklistv.com/live?stream=megabox",
+  "https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/radiokaraoke.m3u8",
+  "https://cdn3.wowza.com/1/OVRrOWxXUEswS2Yv/eGVxSWZy/hls/live/playlist.m3u8",
+  "https://vod.streams.ovh:3037/stream/play.m3u8",
+  "https://dvrfl03.bozztv.com/hdirect/hdirect-telemetrolple2/index.m3u8",
+  "https://eu1.servers10.com:8081/8214/index.m3u8",
+  "https://viamotionhsi.netplus.ch/live/eds/mezzo/browser-HLS8/mezzo.m3u8",
+  "http://103.140.254.2:3500/live/742.m3u8",
+  "https://byecableiptvnew3.ddns.net/ENVIVOMIGENTE/video.m3u8",
+  "https://7.innovatestream.pe:19360/mieltv/mieltv.m3u8",
+  "https://live-radio-cf-vrt.akamaized.net/groupa/live/bac277a1-306d-44a0-8e2e-e5b9c07fa270/live.isml/.m3u8",
+  "https://mntv.livebox.co.in/musichls/live.m3u8",
+  "https://d2ow8h651gs7dx.cloudfront.net/out/v1/371fb663da604e659a2fb99bf89d92d4/index.m3u8",
+  "http://ventdelnord.tv:8080/mola/directe.m3u8",
+  "https://rtmp.digitalbroadcast.ro/moozdance/moozdance.m3u8",
+  "https://rtmp.digitalbroadcast.ro/moozhits/moozhits.m3u8",
+  "https://rtmp.digitalbroadcast.ro/moozro/moozro.m3u8",
+  "https://webcam.mosaiquefm.net/mosatv/_definst_/studio/playlist.m3u8?DVR",
+  "https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/mouv.m3u8",
+  "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5d14fdb8ca91eedee1633117/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2a29f3-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=f1066e5a-9a82-4a1b-a025-868c083394e4",
+  "https://fl1.moveonjoy.com/MUCH/index.m3u8",
+  "https://vdo2.streamgato.us:3144/live/mund2tvlive.m3u8",
+  "https://vs2131.vcdn.biz/7c9ec24eb8edee7c3d3b96d9f3135f48_megogo/live/hls/b/700_2490_4000/u_sid/0/o/156751011/rsid/75909724-61e8-406f-9c58-f0491247f2a6/u_uid/0/u_vod/0/u_device/cms_html5/u_devicekey/_site/lip/91.226.196.37*asn/u_srvc/81255/u_did/web_duMuKipCoyWU9tWH3VWiK9eX5ZPorcR6/type.live/chunklist-sid750262562196381400-b4000000.m3u8",
+  "https://cdn-2.pishow.tv/live/226/master.m3u8",
+  "https://mic.siar.us/mic/live/mic.m3u8",
+  "https://cloudvideo.servers10.com:8081/8032/index.m3u8",
+  "https://5cf4a2c2512a2.streamlock.net/tvmuzangala/tvmuzangala/playlist.m3u8",
+  "http://194.76.186.33:8000/play/a05f/index.m3u8",
+  "https://streams.adapto.kz/hls/live/muzzone/main_stream.m3u8",
+  "https://streamtv.cmediahosthosting.net:3046/live/mygospeltvlive.m3u8",
+  "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01006-abs-cbn-myxnola-dash-abscbnono/index.mpd",
+  "https://hls.navahang.live/hls/stream.m3u8",
+  "https://live.enhdtv.com:19360/nexthd/nexthd.m3u8",
+  "http://live.streams.ovh:1935/NGradio/NGradio/playlist.m3u8",
+  "https://live.kwikmotion.com/sbrksanedaradiolive/srpksanedaradio/playlist.m3u8",
+  "https://tv.nisville.com/live/nisville/playlist.m3u8",
+  "https://nogoumtv.nrpstream.com/hls/stream.m3u8",
+  "https://live.noroc.tv/noroc/noroc.m3u8",
+  "https://lightning-now70s-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-lightning-now70s-rakuten/CDN/playlist.m3u8",
+  "https://lightningnow70-samsungau.amagi.tv/playlist.m3u8",
+  "https://lightning-now80s-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-lightning-now80s-rakuten/CDN/playlist.m3u8",
+  "https://lightningnow80-samsungau.amagi.tv/playlist.m3u8",
+  "https://videostream.jpbgdigital.com/NOWTV.m3u8",
+  "https://stmv1.srvif.com/npc/npc/playlist.m3u8",
+  "https://stream.nuevavidafm.net:3937/live/nuevavidalive.m3u8",
+  "https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/u_stream_5c9e18f9cea15_1/playlist.m3u8",
+  "https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/u_stream_5c9e198784bdc_1/playlist.m3u8",
+  "https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/u_stream_5c9e2aa8acf44_1/playlist.m3u8",
+  "https://mn-nl.mncdn.com/blutv_nr1turk2/live.m3u8",
+  "https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/broadcast_5c9e17cd59e8b.smil/playlist.m3u8",
+  "https://ocko-live-dash.ssl.cdn.cra.cz/cra_live2/ocko.stream.1.smil/playlist.m3u8",
+  "https://ocko-live.ssl.cdn.cra.cz/channels/ocko_expres/playlist.m3u8",
+  "https://ocko-live.ssl.cdn.cra.cz/cra_live2/ocko_gold.stream.1.smil/playlist.m3u8",
+  "https://s.emisoras.tv:8081/olagruperamx/index.m3u8",
+  "https://5ce9406b73c33.streamlock.net/ONFM/livestream/playlist.m3u8",
+  "https://stmv4.voxtvhd.com.br/ondastereo/ondastereo/playlist.m3u8",
+  "https://cdne.folxplay.tv/folx-trz/streams/ch-3/master.m3u8",
+  "https://cdne.folxplay.tv/folx-trz/streams/ch-6/master.m3u8",
+  "https://hms.pfs.gdn/v1/broadcast/one/playlist.m3u8",
+  "https://cdn-4.pishow.tv/live/1499/master.m3u8",
+  "https://live20.bozztv.com/akamaissh101/ssh101/OrbitaFM953/playlist.m3u8",
+  "https://vcp.myplaytv.com/oxigenotv/oxigenotv/playlist.m3u8",
+  "https://vdo2.pro-fhi.net:3207/stream/play.m3u8",
+  "http://live.stream.cdn.pamirtv.com/ptv/d0dbe915091d400bd8ee7f27f0791303.sdp/index.m3u8",
+  "https://livetv.streams.ovh:1936/paniktv/paniktv/playlist.m3u8",
+  "https://d6izdil55uftn.cloudfront.net/out/v1/0a06d1d6377c47edbd48721ed724bd08/index.m3u8",
+  "https://backupmaxmedia.hvmultiplay.com/hls/stream3/parrandavallenata.m3u8",
+  "https://cdn-2.pishow.tv/live/1383/master.m3u8",
+  "https://canadaremar2.todostreaming.es/live/peque-pequetv.m3u8",
+  "https://sonhls.persiana.live/hls/stream.m3u8",
+  "https://musichls.persiana.live/hls/stream.m3u8",
+  "https://noshls.persiana.live/hls/stream.m3u8",
+  "https://raphls.persiana.live/hls/stream.m3u8",
+  "https://sistemastr.tropicalmoonmedia.com/live/C0F6BECADC057D029E107B68CCEBD042/37.m3u8",
+  "https://vdo1.panelstreaming.live:3363/hybrid/play.m3u8",
+  "https://streamlov.alsolnet.com/planet1009fm/live/playlist.m3u8",
+  "http://connectiktv.ddns.net:5000/playtv/@playtv/playlist.m3u8",
+  "http://web.onair-radio.eu:1935/Alpha-Host/Alpha-Host/playlist.m3u8",
+  "https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5cf96d351652631e36d4331f/master.m3u8?advertisingId=&appName=web&appStoreUrl=&appVersion=DNT&app_name=&architecture=&buildVersion=&deviceDNT=0&deviceId=5cf96d351652631e36d4331f&deviceLat=&deviceLon=&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=DNT&includeExtendedEvents=false&marketingRegion=US&serverSideAds=false&sid=965&terminate=false&userId=",
+  "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/60a26a056d55b30007918d5a/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&is_lat=1&platform=web&rdid=channel&serverSideAds=false&tags=ROKU_CONTENT_TAGS",
+  "https://pmcrohls.wns.live/hls/stream.m3u8",
+  "https://janus.xpbroadcasting.com:8443/hls/popworld.m3u8",
+  "https://vcp11.myplaytv.com/powerfm/powerfm/playlist.m3u8",
+  "https://livetv.powerapp.com.tr/dance/dance.smil/playlist.m3u8",
+  "https://cdnlb.tvplayhome.lt/live/eds/PWR_LTU_Live/GO3_LIVE_HLS/PWR_LTU_Live.m3u8?cdntoken=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDczNDU2NjEsInBhdGgiOiIvbGl2ZS9lZHMvUFdSX0xUVV9MaXZlL0dPM19MSVZFX0hMUy8iLCJzaXAiOiI3Mi4xMS4xNTcuMTEyIiwiZGV2aWNlX2lkIjoiMCIsInNlc3Npb25faWQiOiIwIiwiY2xpZW50X2lkIjoiMCJ9.oHc5wUgwNPQ-4P7wJy_WvWQh0muFg9Lprhc4STS3cUHi0FI4tAKGdZOOeE-dOhVBHKFUYETmoXSMrrVHOeLC3g",
+  "https://livetv.powerapp.com.tr/plove/love.smil/playlist.m3u8",
+  "https://livetv.powerapp.com.tr/pplustv/pplustv.smil/playlist.m3u8",
+  "https://livetv.powerapp.com.tr/pturkakustik/akustik.smil/playlist.m3u8",
+  "https://livetv.powerapp.com.tr/pturkeniyiler/eniyiler.smil/playlist.m3u8",
+  "https://livetv.powerapp.com.tr/pturkslow/slow.smil/playlist.m3u8",
+  "https://livetv.powerapp.com.tr/pturktaptaze/taptaze.smil/playlist.m3u8",
+  "https://backend.energeek.cl/webtv/pridetvweb/index.m3u8?token=ZZDemoIPTVGH",
+  "https://cdn-1.pishow.tv/live/449/master.m3u8",
+  "https://streaming.ptcplay.com/ptcdholtvINOne/smil:Live.smil/playlist.m3u8",
+  "https://d2lk5u59tns74c.cloudfront.net/out/v1/f913cf893c594f73b114216e74a2efbc/index.m3u8",
+  "https://cdn-3.pishow.tv/live/441/master.m3u8",
+  "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/punjabi-hits/index.m3u8",
+  "https://live-video.dpgmedia.net/e087512ad0c32643/out/v1/82d59bbe343b4d0896f829c59da82dc0/index.m3u8",
+  "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/64240d3d466225000827412b/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=2c7bb439-35fc-11ef-a031-2b5d494037a2&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=6ba3de05-22ef-4ab2-8d11-c4a6c21d39ba",
+  "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads.xumo_channelId=88883052",
+  "https://stream.qmusic.nl/qmusic/videohls.m3u8",
+  "https://qwestjazz-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-qwestjazz-rakuten/CDN/master.m3u8",
+  "https://samsungau-qwestjazz-samsungtv-zw2jc.amagi.tv/playlist/samsungau-qwestjazz-samsungtv/playlist.m3u8",
+  "https://shls-live-enc.edgenextcdn.net/out/v1/ea4275b6dc0840c198c17f6dc6f1ec49/index.m3u8",
+  "https://live.creacast.com/radio21/smil:radio21.smil/playlist.m3u8",
+  "https://vr1.radioaktual.si/hls/stream.m3u8",
+  "https://video.compuwebecuador.com:3880/stream/play.m3u8",
+  "https://cloudvideo.servers10.com:8081/8154/index.m3u8",
+  "https://eu1.servers10.com:8081/8116/index.m3u8",
+  "https://tuvideoonline.com.ar:3391/live/radioconexionlive.m3u8",
+  "https://contact-live-hls.akamaized.net/hls/live/2038650/CONTACT-Live-HLS/master.m3u8",
+  "https://eu1.servers10.com:8081/8074/index.m3u8",
+  "https://585b674743bbb.streamlock.net/9030/9030/playlist.m3u8",
+  "http://190.107.232.9:8082/livestream/stream.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S3160845/0tuSetc8UFkF/playlist_video.m3u8",
+  "https://www.idealfm104-7.com/hls/0/stream.m3u8",
+  "https://streaming.imagenfm105-1.com/hls/stream.m3u8",
+  "https://amg00745-radioitailaspa-radioitalia-rakuten-sucsc.amagi.tv/hls/amagi_hls_data_rakutenAA-radioitalia-rakuten/CDN/master.m3u8",
+  "https://rjtvhls.wns.live/hls/stream.m3u8",
+  "https://radiojnd.cdn.hostin.cc/radiojnd/playlist.m3u8",
+  "https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/radiokaraoke-2.m3u8",
+  "https://peer2.tdiradio.com/static/streaming-playlists/hls/4207de1d-52e8-4591-ad9e-218069b864d1/0.m3u8",
+  "https://peer2.tdiradio.com/static/streaming-playlists/hls/7c3ea8d3-49dc-4e1b-8b1e-dc6fab71f5cf/0.m3u8",
+  "https://videoserver.tmcreativos.com:19360/radiomaster/radiomaster.m3u8",
+  "https://cloud37.ecuatel.com/monumentaltv/live/manifest.m3u8",
+  "https://v4.tustreaming.cl/radioondadigitaltv/index.m3u8",
+  "https://58d921499d3d3.streamlock.net/RadioPiterpanTV/livestream/playlist.m3u8",
+  "https://vivo.solumedia.com:19360/realpolitik/realpolitik.m3u8",
+  "https://www.streaming507.net:19360/mevo2/mevo2.m3u8",
+  "https://rsdh.cloud-streams.com/rsdh/rsdh/playlist.m3u8",
+  "https://signal.suyaitv.cl/live/26/playlist.m3u8?password=9PcdCnFxUe&username=ZZDemoIPTVGH",
+  "https://00ff00.latnet.media/edge/swh_tv.smil/playlist.m3u8",
+  "https://59d39900ebfb8.streamlock.net/RadioTelehit/RadioTelehit/playlist.m3u8",
+  "https://59d39900ebfb8.streamlock.net/RadioTelekAJOU/RadioTelekAJOU/playlist.m3u8",
+  "https://videoserver.tmcreativos.com:19360/raditropical/raditropical.m3u8",
+  "https://lon.rtsp.me/r3ZnG6WN2HIRxPARhAirIQ/1713628621/hls/9QdykDAy.m3u8",
+  "https://s1.tvdatta.com:3950/multi_web/play.m3u8",
+  "https://5857499ee635b.streamlock.net/radiowesertv-live/_definst_/mp4:livestreamTV/playlist.m3u8",
+  "https://stella.streamerr.co:3065/live/budokantvlive.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S9346184/XEx1LqlYbNic/playlist_video.m3u8",
+  "https://stream.radionl.tv/radionltv/radionltv/playlist.m3u8",
+  "http://103.140.254.2:3500/live/743.m3u8",
+  "https://mumt04.tangotv.in/RAJMUSIXMALAYALAM/index.m3u8",
+  "http://103.140.254.2:3500/live/748.m3u8",
+  "https://cdn-1.pishow.tv/live/1213/master.m3u8",
+  "https://58c04fb1d143f.streamlock.net/rararadio/rararadio/playlist.m3u8",
+  "https://dphwv2ufgnfsq.cloudfront.net/out/v1/59cd80dfe93a479eb8b4d79bc6f225ca/index.m3u8",
+  "https://livetv.streams.ovh:1936/realmusictv/realmusictv/playlist.m3u8",
+  "https://eu1.vectromdigital.com:1936/redmusic/redmusic/playlist.m3u8",
+  "https://eu1.servers10.com:8081/8090/index.m3u8",
+  "https://video03.logicahost.com.br/rfptv/rfptv/playlist.m3u8",
+  "https://edge12.vedge.infomaniak.com/livecast/ik:livehautetension/manifest.m3u8",
+  "rtmp://live.restream.io/pull/play_320121_94512612fd0e084bd284",
+  "https://rotana.hibridcdn.net/rotananet/khaleejiya_net-7Y83PP5adWixDF93/playlist.m3u8",
+  "https://rotana.hibridcdn.net/rotananet/music_net-7Y83PP5adWixDF93/playlist.m3u8",
+  "https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/rtl2.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S76960628/OEPHRUIctA0M/playlist_video.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S75007890/MUGHuxc9dQ3b/playlist_video.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S8448465/zTYa1Z5Op9ue/playlist_video.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S51100361/0Fb4R3k82b5Z/playlist_video.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S27134503/0f9AhuwKlhnZ/playlist_video.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S38122967/2lyQRIAAGgRR/playlist_video.m3u8",
+  "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S97044836/tbbP8T1ZRPBL/playlist_video.m3u8",
+  "https://stream.rtl.lu/data/live/tele/rtlgold/playlist.m3u8",
+  "https://stream.rtl.lu/data/live/tele/rtltodayradio/playlist.m3u8",
+  "http://glasdrine.cutuk.net:8081/433ssdsw/GlasDrineSD/playlist.m3u8",
+  "https://vidartv2.todostreaming.es/live/radiovida-emisiontvhd.m3u8",
+  "https://hls-03-video.webcaramba.com/rutv/live.m3u8",
+  "https://live20.bozztv.com/akamaissh101/ssh101/qMUAZEy/playlist.m3u8",
+  "https://salto-streams.nl/hls/sotv1.m3u8",
+  "https://galaxyott.live/hls/sanaplus.m3u8",
+  "https://cdn-4.pishow.tv/live/1143/master.m3u8",
+  "https://cdn-4.pishow.tv/live/1293/master.m3u8",
+  "https://cdn-3.pishow.tv/live/1229/master.m3u8",
+  "http://ip2.xxlservices.com:8081/seharaonline/live/playlist.m3u8",
+  "https://streamunoapp.com:3809/live/siembratvlive.m3u8",
+  "https://eu.live.skyfolk.mk/live.m3u8",
+  "http://media.velcom.it:1935/sl48/sl48/playlist.m3u8",
+  "https://stream-23.mazana.tv/slagrmuzika.m3u8s",
+  "https://stream-13.mazana.tv/slagroriginal.m3u8s",
+  "https://d2glyu450vvghm.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-21u4g5cjglv02/sm.m3u8",
+  "https://5ff3d9babae13.streamlock.net/8000/8000/playlist.m3u8",
+  "https://cloudflare.streamgato.us:3901/live/somostopopointtvlive.m3u8",
+  "https://yuppnimrestreammum.akamaized.net/181224/smil:songdewtv.smil/hdntl=exp=1767018459~acl=%2f*~data=hdntl~hmac=85f3eb24914af4b01a9b5886a64ab34a6861689e7a16e85eac290f7dce45b41c/chunklist_b2628000.m3u8",
+  "https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8",
+  "https://59ef525c24caa.streamlock.net/vmtv/soyplancha/playlist.m3u8",
+  "https://cloudvideo.servers10.com:8081/8026/tracks-v1a1/index.m3u8",
+  "https://cdnlive.myspirit.tv/LS-ATL-43240-2/index.m3u8",
+  "https://live2.tensila.com/knut-v-1.choice/hls/master.m3u8",
+  "https://live.muzickatv.mk/live/StarMusic.m3u8",
+  "https://live.muzickatv.mk/live/StarMusic2.m3u8",
+  "https://cdn2.in/SteelbirdMusicTVhls/live.m3u8",
+  "https://lotus.stingray.com/manifest/ose-101ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/classica-cla008-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/cmusic-cme004-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/djazz-djaads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-137ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-115ads-montreal/samsungtvplus/master.m3u8",
+  "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads.xumo_channelId=88883053",
+  "https://d39g1vxj2ef6in.cloudfront.net/v1/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/54947915-6504-4548-aaef-eabd451f8607/1.m3u8",
+  "https://lotus.stingray.com/manifest/ose-107ads-montreal/samsungtvplus/master.m3u8",
+  "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads.xumo_channelId=88883054",
+  "https://lotus.stingray.com/manifest/ose-155ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-108ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/karaoke-kar000-montreal/samsungtvplus/master.m3u8",
+  "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads.xumo_channelId=88883056",
+  "https://lotus.stingray.com/manifest/naturescape-a003-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-142ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-104ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-128ads-montreal/samsungtvplus/master.m3u8",
+  "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads.xumo_channelId=88883071",
+  "https://d39g1vxj2ef6in.cloudfront.net/v1/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/68cc5f97-cf6c-4ff7-9125-f56f272dbcb6/1.m3u8",
+  "https://lotus.stingray.com/manifest/ose-102ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-202ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-140ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-134ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-122ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-317ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-190ads-montreal/samsungtvplus/master.m3u8",
+  "https://lotus.stingray.com/manifest/ose-133ads-montreal/samsungtvplus/master.m3u8",
+  "https://fffffff110156200.tvustream.com:8298/ryfy.m3u8",
+  "https://cloudvideo.servers10.com:8081/stztelebista/index.m3u8",
+  "http://103.140.254.2:3500/live/682.m3u8",
+  "http://103.140.254.2:3500/live/895.m3u8",
+  "https://vcp8.myplaytv.com:1936/superq/superq/playlist.m3u8",
+  "https://live.supertv.ro/live/supertv/playlist.m3u8",
+  "https://backupmaxmedia.hvmultiplay.com/hls/stream4/supermusica.m3u8",
+  "http://103.140.254.2:3500/live/747.m3u8",
+  "https://t2hls.wns.live/hls/stream.m3u8",
+  "https://live1.ottlive.co.in/tabbarhitsswift/index.m3u8",
+  "https://shls-live-enc.edgenextcdn.net/out/v1/90143f040feb40589d18c57863d9e829/index.m3u8",
+  "https://livetv.tarangplus.in/tarangmusic-origin/live/playlist.m3u8",
+  "https://peer2.tdiradio.com/static/streaming-playlists/hls/8f5d84ce-e8ac-4109-9975-9665f5605557/master.m3u8",
+  "https://live.tele7music.ro/hls/stream/index.m3u8",
+  "https://vdopanel.jlahozconsulting.com/p/3417/hybrid/play.m3u8",
+  "https://vdo.pro-fhi.net:3228/stream/play.m3u8",
+  "http://190.61.55.34:2401/play/a06t/index.m3u8",
+  "https://58c04fb1d143f.streamlock.net/rezopropartner_1_live/rezopropartner_1_live/playlist.m3u8",
+  "https://inliveserver.com:1936/18506/18506/playlist.m3u8",
+  "https://tezaurtv.md/wp-content/uploads/live/index.m3u8",
+  "https://amg00600-amg00600c1-thecountrynetwork-us-5497.playouts.now.amagi.tv/playlist.m3u8",
+  "https://cdn.mycloudstream.io/hls/live/broadcast/ka5ofgte/720p.m3u8",
+  "https://bss1.neterra.tv/thevoice/thevoice.m3u8",
+  "https://streamer103.neterra.tv/tiankov-folk/live.m3u8",
+  "https://streamer103.neterra.tv/tiankov-orient/live.m3u8",
+  "https://tntm.mediacdn.ru/cdn/tntmusic/tracks-v2a1/mono.ts.m3u8?filter.tracks=v1v2v3v4v5a1",
+  "http://82.165.71.58:8081/TopTV/live/playlist.m3u8",
+  "http://live.topestrada.com/live/topestrada/playlist.m3u8",
+  "https://sistemastr.tropicalmoonmedia.com/live/56BE17DB16EB76C9F2DDB8346F4DFA4E/30.m3u8",
+  "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic/SA_LIVE_hls_enc/master.m3u8",
+  "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_80s/SA_LIVE_hls_enc/master.m3u8",
+  "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_00s/SA_LIVE_hls_enc/master.m3u8",
+  "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_Concerts/SA_LIVE_hls_enc/master.m3u8",
+  "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_Dance/SA_LIVE_hls_enc/master.m3u8",
+  "https://cdn.streamhispanatv.net:3209/live/totovisiongtlive.m3u8",
+  "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01131-tracetv-tracelatinait-samsungit/playlist.m3u8",
+  "http://83.103.149.75:8085/udp/239.30.0.9:4000",
+  "https://www.streaming507.net:19360/videotropiq/videotropiq.m3u8",
+  "https://srv2.tropicalmoonmedia.com/cumbiatv/cumbiatv/playlist.m3u8",
+  "https://srv.tropicalmoonmedia.com/musictv/musictv/playlist.m3u8",
+  "https://srv.tropicalmoonmedia.com/urbantvnetott/urbantvnetott/playlist.m3u8",
+  "https://tv-trtmuzik.medya.trt.com.tr/master.m3u8",
+  "https://mlb.essastream.com:8081/tumusicahd/tracks-v1a1/mono.m3u8",
+  "http://103.140.254.2:3500/live/803.m3u8",
+  "https://7.innovatestream.pe:19360/turbomixoficial/turbomixoficial.m3u8",
+  "https://alpha.tv.online.tm/hls/ch005.m3u8",
+  "https://ssh101.bozztv.com/ssh101/rtvarberia4/playlist.m3u8",
+  "https://ssh101.bozztv.com/ssh101/rtvarberiaretro/playlist.m3u8",
+  "http://109.92.29.10:1935/tvduga/tvduga/playlist.m3u8",
+  "https://streamingtv.masplay.x10.mx/proxy/mixtv/playlist.m3u8",
+  "https://streaming.grupomediosdelnorte.com:19360/tvexitos/tvexitos.m3u8",
+  "https://cloud.tvomix.com/TVOMIX/index.m3u8",
+  "https://hdbox.chunklistv.com/live?stream=tvone",
+  "https://tvr-tvrfolclor.cdn.zitec.com/live/tvrfolclor/main.m3u8",
+  "https://rpn.bozztv.com/gusa/gusa-tvsmusic/index.m3u8",
+  "https://streamtv.onliv3.online:1936/karibtv/karibtv/playlist.m3u8",
+  "https://54627d4fc5996.streamlock.net/tzik/tzik/chunklist.m3u8",
+  "http://103.140.254.2:3500/live/744.m3u8",
+  "https://stream.galaxyott.live/live/utv/index.m3u8",
+  "https://59ef525c24caa.streamlock.net/tvurbano/tvurbano/playlist.m3u8",
+  "https://abr.de1se01.v2beat.live/playlist.m3u8",
+  "https://5eaccbab48461.streamlock.net:1936/8112/8112/playlist.m3u8",
+  "https://6n3yope4d9ok-hls-live.5centscdn.com/vaanavil/TV.stream/playlist.m3u8",
+  "https://59a564764e2b6.streamlock.net/vallenato/vallenatom/playlist.m3u8",
+  "https://sincerecloud.stream/loadbalancer/public/J9EmQQGf.m3u8",
+  "https://amg00056-amg00056c13-rakuten-es-3246.playouts.now.amagi.tv/playlist.m3u8",
+  "https://fl1.moveonjoy.com/VH1/index.m3u8",
+  "https://content.uplynk.com/channel/36953f5b6546464590d2fcd954bc89cf.m3u8",
+  "https://d3b2epqdk0p7vd.cloudfront.net/out/v1/8a448b5e16384af4a3c8146a7b049c32/index.m3u8",
+  "http://k4.usastreams.com/videotour/videotour/playlist.m3u8",
+  "https://59ef525c24caa.streamlock.net/vmtv/tvvintage/playlist.m3u8",
+  "https://ed5ov1.live.opencaster.com/bkyqeDgfaukC/index.m3u8",
+  "https://cloudvideo.servers10.com:8081/8016/index.m3u8",
+  "http://185.36.211.142:8080/tmp_hls/viva/index.m3u8",
+  "https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/chunks.m3u8",
+  "https://59ef525c24caa.streamlock.net/vmtv/vmlatino/playlist.m3u8",
+  "https://cloudvideo.servers10.com:8081/8198/index.m3u8",
+  "https://vmtv.iptv-playoutcenter.de/vmtv/vmtv1/playlist.m3u8",
+  "https://cloud37.ecuatel.com/vostv/live/manifest.m3u8",
+  "https://live-radio-cf-vrt.akamaized.net/groupb/live/eee20dc8-158a-4194-8d92-0c5a73ffcd3b/live.isml/.m3u8",
+  "https://live-radio-cf-vrt.akamaized.net/groupb/live/0f394a26-c87d-475e-8590-e9c6e79b28d9/live.isml/.m3u8",
+  "https://wanasah-prod-dub-enc.edgenextcdn.net/out/v1/c84ef3128e564b74a6a796e8b6287de6/index.m3u8",
+  "https://streamer2.nexgen.bz/08-WAVE/index.m3u8",
+  "https://video1.getstreamhosting.com:1936/8152/8152/playlist.m3u8",
+  "https://livestream.lamusica.com/nacionz/ngrp:nacionz_all/playlist.m3u8",
+  "https://tuvideoonline.com.ar:3332/live/xlevelmedialive.m3u8",
+  "https://ms2.mx-cd.net/tv/226-1855782/XITE_NL.smil/playlist.m3u8",
+  "https://stmv.streamingvip.click/xpressojovenradiotv/xpressojovenradiotv/playlist.m3u8",
+  "https://janus.xpbroadcasting.com:8443/hls/xptv1.m3u8",
+  "https://ylestudiolive.akamaized.net/hls/live/2007826/ylestudiolive-YleX/master.m3u8",
+  "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/654102ed770cf1000866c307/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=2c7c9e98-35fc-11ef-a031-2b5d494037a2&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=4c7b00a0-d803-41b5-95bb-c20d39e69ce2",
+  "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01412-xiaomiasia-yrfmusic-xiaomi/playlist.m3u8",
+  "https://server.zillarbarta.com/zbmusic/index.m3u8",
+  "http://5db313b643fd8.streamlock.net:1935/ZerounoTV/ZerounoTV/playlist.m3u8",
+  "https://zfmzoetermeer.nl/live/master.m3u8",
+  "http://103.167.255.18:8085/play/a0mx/index.m3u8",
+  "https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8",
+  "https://acceso.radiosportstv.online:3022/stream/play.m3u8",
+  "https://dai.google.com/linear/hls/event/JCAm25qkRXiKcK1AJMlvKQ/master.m3u8",
+  "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/zoom-tv/master.m3u8",
+  "https://hls.rundletv.eu.org/LIVE$RadioZU/6.m3u8/Level/300720051?end=END&start=LIVE",
+  "https://cdne.folxplay.tv/folx-trz/streams/ch-2/master.m3u8",
+  "http://streamer.rtcommufa.ru:1935/ptica/ptica1/playlist.m3u8",
+  "https://public.streaming.matur-tv.ru/hls/h264_aac/stream.m3u8",
+  "https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz2/muzsoyuz.6fw0-58xp-acts-esy0/playlist.m3u8",
+  "https://streaming.televizor-24-tochka.ru/live/20.m3u8",
+  "https://kino-1.catcast.tv/content/37745/index.m3u8",
+  "https://kino-1.catcast.tv/content/37739/index.m3u8",
+  "http://31.148.48.15/Muzika_Pervogo/index.m3u8",
+  "http://31.148.48.15/O2_HD/index.m3u8",
+  "http://hz1.teleport.cc/HLS/SD.m3u8",
+  "http://rtmp.one.by:2200",
+  "http://lova.me/hls/hithd.m3u8",
+  "http://chanson-video.hostingradio.ru:8080/hls/chansonabr/live.m3u8",
+  "https://cityeden.catcast.tv/content/47410/index.m3u8",
+  "https://cityeden.catcast.tv/content/34100/index.m3u8",
+  "https://cityeden.catcast.tv/content/34364/index.m3u8",
+  "https://cityeden.catcast.tv/content/47400/index.m3u8",
+  "https://cityeden.catcast.tv/content/46421/index.m3u8",
+  "http://live.stranafm.cdnvideo.ru/stranafm/stranafm_hd.sdp/playlist.m3u8",
+  "https://st2.mediabay.tv/KG_KTRK-Muzika/index.m3u8",
+  "https://uiptv.do.am/1ufc/602079679/playlist.m3u8",
 ]);
 
 const PLAYLISTS = [
@@ -2261,6 +2841,10 @@ const PLAYLISTS = [
   },
   { name: "News", url: "https://iptv-org.github.io/iptv/categories/news.m3u" },
   { name: "Kids", url: "https://iptv-org.github.io/iptv/categories/kids.m3u" },
+  {
+    name: "music",
+    url: "https://iptv-org.github.io/iptv/categories/music.m3u",
+  },
 ];
 
 // ================= DOM =================
@@ -2285,19 +2869,52 @@ let favorites = new Set(JSON.parse(localStorage.getItem("favorites") || "[]"));
 let hls;
 let drawerOpen = false;
 
+// ⭐ ADDITIVE STATE (does not affect existing logic)
+let selectedCategory = null;
+
 // Error tolerance
 const errorCounts = {};
 const MAX_ERRORS = 2;
 const ERROR_RESET_MS = 2500;
 
-// ================= FETCH PLAYLISTS =================
-Promise.all(
-  PLAYLISTS.map((p) =>
-    fetch(p.url)
-      .then((res) => res.text())
-      .then((data) => parseM3U(data, p.name)),
-  ),
-).then(() => renderChannels());
+async function init() {
+  try {
+    let loadedCount = 0;
+
+    const loading = document.getElementById("loadingOverlay");
+    const loadingText = document.getElementById("loadingText");
+
+    loadingText.textContent = "Connecting to Satellite...";
+
+    await Promise.all(
+      PLAYLISTS.map(async (p) => {
+        try {
+          const res = await fetch(p.url);
+          if (!res.ok) throw new Error("Failed");
+          const text = await res.text();
+          parseM3U(text, p.name);
+          loadedCount++;
+          loadingText.textContent = `Loaded ${p.name}...`;
+        } catch {
+          console.warn(`Failed to load ${p.name}`);
+        }
+      }),
+    );
+
+    if (loadedCount === 0) {
+      loadingText.textContent = "Network Error. Check Internet.";
+      setTimeout(() => (loading.style.display = "none"), 2000);
+    } else {
+      renderChannels();
+      setTimeout(() => {
+        loading.style.opacity = "0";
+        setTimeout(() => (loading.style.display = "none"), 500);
+      }, 800);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 // ================= PARSE M3U =================
 function parseM3U(data, categoryName) {
@@ -2330,13 +2947,64 @@ function parseM3U(data, categoryName) {
   });
 }
 
+// ================= CATEGORY CARDS (NEW, ISOLATED) =================
+function renderCategoryCards() {
+  channelContainer.innerHTML = "";
+  channelContainer.className = "channel-grid px-4 pb-20 pt-2 content-start";
+
+  Object.keys(categories).forEach((cat) => {
+    const count = categories[cat].length;
+    const card = document.createElement("div");
+    card.className =
+      "glass-card p-4 flex flex-col justify-between h-32 cursor-pointer group hover:bg-indigo-500/20";
+
+    // Icons based on category
+    let icon = "tv";
+    if (cat === "Sports") icon = "trophy";
+    if (cat === "Music" || cat === "music") icon = "music";
+    if (cat === "News") icon = "globe";
+    if (cat === "Kids") icon = "smile";
+
+    card.innerHTML = `
+      <div class="flex justify-between items-start">
+        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-indigo-300 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+          <i data-lucide="${icon}" class="w-4 h-4"></i>
+        </div>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600 group-hover:text-white"></i>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg leading-none mb-1">${cat}</h3>
+        <p class="text-[10px] text-slate-400 font-mono">${count} CHANNELS</p>
+      </div>
+    `;
+
+    card.onclick = () => {
+      selectedCategory = cat;
+      renderChannels();
+    };
+
+    channelContainer.appendChild(card);
+  });
+
+  channelCount.textContent = `${Object.keys(categories).length} CATEGORIES`;
+  lucide.createIcons();
+}
+
 // ================= RENDER =================
 function renderChannels(filterBroken = false) {
   const query = searchInput.value.toLowerCase();
   channelContainer.innerHTML = "";
   let visibleCount = 0;
 
+  // ⭐ CATEGORY VIEW (no existing logic touched)
+  if (!selectedCategory) {
+    renderCategoryCards();
+    return;
+  }
+
   Object.entries(categories).forEach(([catName, catAll]) => {
+    if (catName !== selectedCategory) return;
+
     const catChannels = catAll.filter((ch) => {
       if (!ch.name.toLowerCase().includes(query)) return false;
       if (
@@ -2354,13 +3022,21 @@ function renderChannels(filterBroken = false) {
     const header = document.createElement("div");
     header.className = "flex items-center justify-between px-2 mt-3 mb-1";
 
+    const backBtn = document.createElement("button");
+    backBtn.textContent = "← Categories";
+    backBtn.className = "text-xs text-indigo-400 hover:text-indigo-200";
+    backBtn.onclick = () => {
+      selectedCategory = null;
+      renderChannels();
+    };
+
     const title = document.createElement("h3");
     title.textContent = catName;
     title.className = "text-xs font-bold uppercase text-slate-400";
 
-    header.appendChild(title);
+    header.append(backBtn, title);
 
-    // DEV: CATEGORY CHECKBOX
+    // DEV: CATEGORY CHECKBOX (UNCHANGED)
     if (DEV_MODE) {
       const allBroken = catChannels.every((ch) => brokenStreams.has(ch.url));
       const cb = document.createElement("input");
@@ -2405,7 +3081,7 @@ function renderChannels(filterBroken = false) {
         <button class="text-yellow-400 text-lg">${favorites.has(ch.url) ? "★" : "☆"}</button>
       `;
 
-      // DEV: INDIVIDUAL CHECKBOX
+      // DEV: INDIVIDUAL CHECKBOX (UNCHANGED)
       if (DEV_MODE) {
         const cb = document.createElement("input");
         cb.type = "checkbox";
@@ -2493,84 +3169,14 @@ function openDrawer() {
 }
 
 function closeDrawer() {
-  // Check if mobile (screen width < 1024px)
   if (window.innerWidth < 1024) {
-    drawer.style.transform = "translateY(100%)"; // Fully hide on mobile
+    drawer.style.transform = "translateY(100%)";
   } else {
-    drawer.style.transform = "translateY(0)"; // Keep visible on desktop
+    drawer.style.transform = "translateY(0)";
   }
   drawerOpen = false;
 }
 
-// ================= FULLSCREEN =================
-const fullscreenBtn = document.getElementById("fullscreenBtn");
-const videoContainer = document.querySelector(".relative.w-full.h-full");
-
-fullscreenBtn.onclick = () => {
-  if (!document.fullscreenElement) {
-    if (videoContainer.requestFullscreen) {
-      videoContainer.requestFullscreen();
-    } else if (videoContainer.webkitRequestFullscreen) {
-      videoContainer.webkitRequestFullscreen();
-    } else if (videoContainer.msRequestFullscreen) {
-      videoContainer.msRequestFullscreen();
-    }
-    fullscreenBtn.querySelector("i").setAttribute("data-lucide", "minimize");
-    lucide.createIcons();
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-    fullscreenBtn.querySelector("i").setAttribute("data-lucide", "maximize");
-    lucide.createIcons();
-  }
-};
-
-// Update icon when fullscreen changes
-document.addEventListener("fullscreenchange", () => {
-  if (!document.fullscreenElement) {
-    fullscreenBtn.querySelector("i").setAttribute("data-lucide", "maximize");
-    lucide.createIcons();
-  }
-});
-
-// ================= SCREEN TAP TO SHOW DRAWER =================
-const playerArea = document.querySelector(".relative.flex-1");
-let tapTimeout;
-
-// Show drawer on screen tap when it's hidden
-playerArea.addEventListener("click", (e) => {
-  // Don't trigger if clicking on buttons or controls
-  if (e.target.closest("button") || e.target.closest("#drawer")) {
-    return;
-  }
-
-  // Only on mobile
-  if (window.innerWidth < 1024 && !drawerOpen) {
-    openDrawer();
-
-    // Auto-hide after 5 seconds of no interaction
-    clearTimeout(tapTimeout);
-    tapTimeout = setTimeout(() => {
-      if (drawerOpen) {
-        closeDrawer();
-      }
-    }, 5000);
-  }
-});
-
-// Clear auto-hide timeout if user interacts with drawer
-drawer.addEventListener("touchstart", () => {
-  clearTimeout(tapTimeout);
-});
-
-drawer.addEventListener("mousedown", () => {
-  clearTimeout(tapTimeout);
-});
 // ================= MODAL =================
 brokenBtn.onclick = () => {
   brokenList.innerHTML = "";
@@ -2590,3 +3196,5 @@ closeModalBtn.onclick = () => (brokenModal.style.display = "none");
 // ================= EVENTS =================
 searchInput.oninput = () => renderChannels();
 hideBrokenCheckbox.onchange = () => renderChannels();
+
+document.addEventListener("DOMContentLoaded", init);
