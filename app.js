@@ -2860,6 +2860,8 @@ const channelCount = document.getElementById("channel-count");
 const brokenModal = document.getElementById("brokenModal");
 const brokenList = document.getElementById("brokenList");
 const closeModalBtn = brokenModal.querySelector(".closeModal");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+const fullscreenIcon = document.getElementById("fullscreenIcon");
 
 // ================= STATE =================
 let channels = [];
@@ -3196,5 +3198,51 @@ closeModalBtn.onclick = () => (brokenModal.style.display = "none");
 // ================= EVENTS =================
 searchInput.oninput = () => renderChannels();
 hideBrokenCheckbox.onchange = () => renderChannels();
+
+// ================= FULLSCREEN =================
+function toggleFullscreen() {
+  const videoContainer = video.parentElement;
+
+  if (!document.fullscreenElement) {
+    // Enter fullscreen
+    if (videoContainer.requestFullscreen) {
+      videoContainer.requestFullscreen();
+    } else if (videoContainer.webkitRequestFullscreen) {
+      videoContainer.webkitRequestFullscreen();
+    } else if (videoContainer.mozRequestFullScreen) {
+      videoContainer.mozRequestFullScreen();
+    } else if (videoContainer.msRequestFullscreen) {
+      videoContainer.msRequestFullscreen();
+    }
+  } else {
+    // Exit fullscreen
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+}
+
+function updateFullscreenIcon() {
+  if (document.fullscreenElement) {
+    fullscreenIcon.setAttribute("data-lucide", "minimize");
+  } else {
+    fullscreenIcon.setAttribute("data-lucide", "maximize");
+  }
+  lucide.createIcons();
+}
+
+fullscreenBtn.onclick = toggleFullscreen;
+
+// Listen for fullscreen changes
+document.addEventListener("fullscreenchange", updateFullscreenIcon);
+document.addEventListener("webkitfullscreenchange", updateFullscreenIcon);
+document.addEventListener("mozfullscreenchange", updateFullscreenIcon);
+document.addEventListener("MSFullscreenChange", updateFullscreenIcon);
 
 document.addEventListener("DOMContentLoaded", init);

@@ -154,6 +154,25 @@
             background: rgba(255, 255, 255, 0.2);
             border-radius: 4px;
         }
+
+        /* Fullscreen Button - Mobile touch support */
+        @media (max-width: 1023px) {
+            #fullscreenBtn {
+                opacity: 0.7;
+                position: fixed;
+                top: 65%;
+                height: fit-content;
+            }
+
+            #fullscreenBtn:active {
+                opacity: 1;
+            }
+        }
+
+        /* Show fullscreen button when video container is tapped on mobile */
+        .video-container-active #fullscreenBtn {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -219,6 +238,12 @@
                 class="absolute inset-0 bg-black/60 z-30 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
                 <div class="loader"></div>
             </div>
+
+            <!-- Fullscreen Button -->
+            <button id="fullscreenBtn"
+                class="absolute bottom-4 right-4 z-40 p-3 bg-black/60 hover:bg-indigo-600/80 rounded-full border border-white/20 backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <i id="fullscreenIcon" data-lucide="maximize" class="w-5 h-5 text-white"></i>
+            </button>
         </div>
     </div>
 
