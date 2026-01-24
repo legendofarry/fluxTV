@@ -3170,7 +3170,7 @@ function openDrawer() {
 
 function closeDrawer() {
   if (window.innerWidth < 1024) {
-    drawer.style.transform = "translateY(100%)";
+    drawer.style.transform = "translateY(80%)";
   } else {
     drawer.style.transform = "translateY(0)";
   }
