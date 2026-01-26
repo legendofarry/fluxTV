@@ -14,10 +14,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
     <style>
         :root {
             --primary: #6366f1;
             --secondary: #a855f7;
+            --accent: #06b6d4;
             --dark: #020617;
             --glass: rgba(30, 41, 59, 0.6);
             --glass-border: rgba(255, 255, 255, 0.08);
@@ -38,7 +42,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle at 50% 50%, #111029 0%, #020617 100%);
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
             z-index: -2;
         }
 
@@ -48,9 +52,32 @@
             height: 200%;
             top: -50%;
             left: -50%;
-            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1), transparent 50%);
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08), transparent 60%);
             animation: moveMesh 25s infinite alternate ease-in-out;
             z-index: -1;
+        }
+
+        /* Additional decorative blobs */
+        .blob-1 {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            filter: blur(50px);
+            animation: float 15s ease-in-out infinite reverse;
         }
 
         @keyframes moveMesh {
@@ -60,6 +87,18 @@
 
             100% {
                 transform: translate(30px, 30px) scale(1.1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
             }
         }
 
@@ -102,25 +141,25 @@
             box-shadow: 0 15px 30px -10px rgba(99, 102, 241, 0.3) !important;
         }
 
-        /* --- NEW CAROUSEL STYLES --- */
+        /* --- CAROUSEL STYLES --- */
         .carousel-wrapper {
             width: 100%;
             overflow: hidden;
             display: flex;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
 
         .carousel-track {
             display: flex;
             gap: 16px;
             width: max-content;
-            /* Infinite Scroll Animation */
         }
 
-        /* Left to Right Animation */
         .scroll-left-to-right {
-            animation: scrollLTR 40s linear infinite;
+            animation: scrollLTR 50s linear infinite;
         }
 
         @keyframes scrollLTR {
@@ -133,9 +172,8 @@
             }
         }
 
-        /* Right to Left Animation (Standard) */
         .scroll-right-to-left {
-            animation: scrollRTL 40s linear infinite;
+            animation: scrollRTL 50s linear infinite;
         }
 
         @keyframes scrollRTL {
@@ -149,42 +187,52 @@
         }
 
         .carousel-card {
-            width: 200px;
-            height: 120px;
-            border-radius: 12px;
+            width: 180px;
+            height: 100px;
+            border-radius: 16px;
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .carousel-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-2px);
             border-color: var(--primary);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
             z-index: 10;
         }
 
-        /* Card Background Image Styling */
         .cc-bg {
             position: absolute;
             inset: 0;
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.4;
-            filter: blur(2px);
-            transform: scale(1.2);
+            opacity: 0.5;
+            filter: grayscale(100%) blur(0.5px);
+            transform: scale(0.8);
+            transition: all 0.3s;
+        }
+
+        .carousel-card:hover .cc-bg {
+            filter: grayscale(0%);
+            opacity: 0.8;
+            transform: scale(0.9);
         }
 
         .cc-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4));
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 12px;
+            padding: 10px;
         }
 
         /* --- LOADER --- */
@@ -192,7 +240,7 @@
             position: absolute;
             inset: 0;
             background: rgba(2, 6, 23, 0.9);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
             z-index: 50;
             display: none;
             flex-direction: column;
@@ -211,6 +259,7 @@
             background: var(--primary);
             border-radius: 4px;
             animation: equalizer 1s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--primary);
         }
 
         .signal-bar:nth-child(1) {
@@ -249,7 +298,7 @@
             50% {
                 transform: scaleY(1.5);
                 opacity: 1;
-                box-shadow: 0 0 10px var(--primary);
+                box-shadow: 0 0 15px var(--secondary);
             }
         }
 
@@ -292,6 +341,16 @@
             border-radius: 4px;
         }
 
+        .text-glow {
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         @media (max-width: 1023px) {
             #drawer {
                 transform: translateY(calc(100% - 60px));
@@ -301,29 +360,10 @@
                 transform: translateY(0);
             }
 
-            /* Mobile Fullscreen Button */
             #fullscreenBtn {
-                opacity: 1;
-                bottom: 60px;
-                right: 20px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            #fullscreenBtn {
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
-
-            .group:hover #fullscreenBtn {
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 1023px) {
-            .placeholderContent {
-                margin-top: 100px;
-                height: 100%;
+                opacity: 1 !important;
+                bottom: 20px !important;
+                right: 20px !important;
             }
         }
     </style>
@@ -333,30 +373,34 @@
 
     <!-- INITIAL LOADING SCREEN -->
     <div id="loadingOverlay">
-        <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-        <h2 class="text-xl font-bold tracking-[0.2em] animate-pulse">STREAMVIBE</h2>
+        <div
+            class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4 shadow-[0_0_20px_#6366f1]">
+        </div>
+        <h2 class="text-xl font-bold tracking-[0.2em] animate-pulse text-white">STREAMVIBE</h2>
         <p id="loadingText" class="text-xs text-slate-500 mt-2">Initializing...</p>
     </div>
 
     <!-- BACKGROUND -->
     <div class="ambient-bg"></div>
     <div class="ambient-mesh"></div>
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
 
     <!-- ================= PLAYER AREA ================= -->
-    <div class="relative flex-1 flex flex-col items-center justify-center p-0 lg:p-6 bg-black/40">
+    <div class="relative flex-1 flex flex-col items-center justify-center p-0 lg:p-6 bg-black/20">
 
         <!-- HEADER INFO -->
         <div
-            class="absolute top-0 left-0 right-0 p-4 z-20 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+            class="absolute top-0 left-0 right-0 p-4 z-20 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent pointer-events-none">
             <div class="flex items-center gap-3 pointer-events-auto">
                 <div
-                    class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                    class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] border border-white/10">
                     <i data-lucide="tv" class="w-4 h-4 text-white"></i>
                 </div>
                 <div>
                     <h1 class="text-sm font-bold tracking-wider text-white">STREAMVIBE</h1>
                     <p id="current-channel-name"
-                        class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Select Channel</p>
+                        class="text-[10px] text-indigo-300 font-bold uppercase tracking-widest">Select Channel</p>
                 </div>
             </div>
             <div id="statusBadge"
@@ -367,145 +411,192 @@
 
         <!-- VIDEO CONTAINER -->
         <div
-            class="relative w-full h-full lg:h-[85vh] lg:rounded-2xl overflow-hidden bg-slate-900 shadow-2xl ring-1 ring-white/10 group">
+            class="relative w-full h-full lg:h-[85vh] lg:rounded-2xl overflow-hidden bg-[#0a0a0a] shadow-2xl ring-1 ring-white/10 group flex flex-col">
 
-            <!-- 1. EMPTY STATE WITH AUTO-SCROLL CAROUSEL -->
-            <div id="placeholderState"
-                class="absolute inset-0 z-10 bg-slate-950 flex flex-col justify-center overflow-hidden">
+            <!-- 1. EMPTY STATE WITH AUTO-SCROLL CAROUSEL & LOTTIE -->
+            <div id="placeholderState" class="absolute inset-0 z-10 flex flex-col overflow-y-auto custom-scroll">
 
+                <!-- Background Image & Gradient -->
                 <div
-                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80')] bg-cover bg-center opacity-10 blur-xl">
+                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1574375927938-d5a98e8efe30?q=80')] bg-cover bg-center opacity-10">
                 </div>
+                <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/90 to-slate-950"></div>
 
-                <div class="placeholderContent relative z-10 w-full space-y-8">
+                <div class="relative z-10 w-full flex flex-col min-h-full">
 
-                    <div class="text-center mb-6">
-                        <h2 class="text-2xl font-bold text-white tracking-tight">StreamVibe Channels</h2>
-                        <p class="text-xs text-slate-400 uppercase tracking-[0.2em] mt-2">Select a category to begin</p>
+                    <!-- HERO TEXT -->
+                    <div class="text-center pt-12 pb-6 px-4">
+                        <div
+                            class="inline-block px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-3 backdrop-blur-sm">
+                            <span class="text-[10px] font-bold text-indigo-300 uppercase tracking-widest">Live IPTV
+                                Player</span>
+                        </div>
+                        <h2
+                            class="text-3xl md:text-4xl font-black text-white tracking-tight mb-2 gradient-text text-glow">
+                            StreamVibe Universe</h2>
+                        <p class="text-sm text-slate-400 max-w-md mx-auto leading-relaxed">Choose your category from the
+                            drawer to begin your cinematic experience.</p>
                     </div>
 
                     <!-- ROW 1: FEATURED (Right to Left) -->
-                    <div class="w-full">
-                        <div class="px-6 mb-2 flex items-center gap-2">
-                            <i data-lucide="zap" class="w-3 h-3 text-yellow-400"></i>
-                            <span class="text-xs font-bold text-slate-300 uppercase tracking-wider">Featured</span>
+                    <div class="w-full mb-2">
+                        <div class="px-6 mb-2 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-1 h-4 bg-yellow-400 rounded-full shadow-[0_0_10px_orange]"></div>
+                                <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Featured</span>
+                            </div>
                         </div>
                         <div class="carousel-wrapper">
                             <div class="carousel-track scroll-right-to-left">
-                                <!-- DUPLICATED ITEMS FOR INFINITE LOOP -->
-                                <!-- Set 1 -->
-                                <div class="carousel-card bg-slate-800">
+                                <!-- ITEMS -->
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Canal%2B_logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">Canal+</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">Canal+</span>
+                                    </div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/HBO_logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">HBO</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">HBO</span>
+                                    </div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/BBC_News_%282022%29.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">BBC News</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">BBC
+                                            News</span></div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/de/National_Geographic_Logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">Nat Geo</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">Nat Geo</span>
+                                    </div>
                                 </div>
-                                <!-- Set 1 Duplicate (For Loop) -->
-                                <div class="carousel-card bg-slate-800">
+                                <!-- LOOP -->
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Canal%2B_logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">Canal+</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">Canal+</span>
+                                    </div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/HBO_logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">HBO</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">HBO</span>
+                                    </div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/BBC_News_%282022%29.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">BBC News</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">BBC
+                                            News</span></div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/de/National_Geographic_Logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">Nat Geo</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">Nat Geo</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- ROW 2: POPULAR (Left to Right) -->
-                    <div class="w-full">
-                        <div class="px-6 mb-2 flex items-center gap-2">
-                            <i data-lucide="trending-up" class="w-3 h-3 text-red-400"></i>
-                            <span class="text-xs font-bold text-slate-300 uppercase tracking-wider">Popular</span>
+                    <div class="w-full mb-4">
+                        <div class="px-6 mb-2 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-1 h-4 bg-red-500 rounded-full shadow-[0_0_10px_red]"></div>
+                                <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Popular</span>
+                            </div>
                         </div>
                         <div class="carousel-wrapper">
                             <div class="carousel-track scroll-left-to-right">
-                                <!-- Set 2 -->
-                                <div class="carousel-card bg-slate-800">
+                                <!-- ITEMS -->
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/36/CNN_International_logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">CNN Int</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">CNN Int</span>
+                                    </div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/14/ESPN_wordmark.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">ESPN</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">ESPN</span>
+                                    </div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b3/Nickelodeon_2009_logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">Nickelodeon</span></div>
+                                    <div class="cc-overlay"><span
+                                            class="font-bold text-xs text-white/90">Nickelodeon</span></div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/77/Discovery_Channel_2019.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">Discovery</span></div>
+                                    <div class="cc-overlay"><span
+                                            class="font-bold text-xs text-white/90">Discovery</span></div>
                                 </div>
-                                <!-- Set 2 Duplicate (For Loop) -->
-                                <div class="carousel-card bg-slate-800">
+                                <!-- LOOP -->
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/36/CNN_International_logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">CNN Int</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">CNN Int</span>
+                                    </div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/14/ESPN_wordmark.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">ESPN</span></div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">ESPN</span>
+                                    </div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b3/Nickelodeon_2009_logo.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">Nickelodeon</span></div>
+                                    <div class="cc-overlay"><span
+                                            class="font-bold text-xs text-white/90">Nickelodeon</span></div>
                                 </div>
-                                <div class="carousel-card bg-slate-800">
+                                <div class="carousel-card">
                                     <div class="cc-bg"
                                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/77/Discovery_Channel_2019.svg');">
                                     </div>
-                                    <div class="cc-overlay"><span class="font-bold text-sm">Discovery</span></div>
+                                    <div class="cc-overlay"><span
+                                            class="font-bold text-xs text-white/90">Discovery</span></div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- ROW 3: LOTTIE ANIMATION (Takes Remaining Space) -->
+                    <div class="flex-1 w-full flex flex-col items-center justify-center p-6 relative">
+                        <!-- Subtle Glow behind Lottie -->
+                        <div class="absolute w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]"></div>
+
+                        <div class="relative z-10 w-full max-w-[400px] h-[300px] flex items-center justify-center">
+                            <!-- Using DotLottie Player for Movie Animation -->
+                            <dotlottie-player src="/assets/movie.json" background="transparent" speed="1"
+                                style="width: 100%; height: 100%;" loop autoplay>
+                            </dotlottie-player>
+                        </div>
+
+                        <div class="text-center mt-2">
+                            <h3 class="text-lg font-bold text-white mb-1">Waiting Lounge</h3>
+                            <p class="text-xs text-slate-500">Pick a channel to start the show</p>
                         </div>
                     </div>
 
@@ -525,15 +616,13 @@
                 <p class="text-[10px] text-indigo-300 mt-2">Buffering Stream...</p>
             </div>
 
-            <!-- 3. ACTUAL VIDEO -->
-            <div class="relative w-full h-full">
+            <!-- 3. ACTUAL VIDEO WITH EMBEDDED BUTTON -->
+            <div class="relative w-full h-full select-none flex-grow">
                 <video id="video" class="w-full h-full object-contain relative z-0"></video>
 
-                <!-- Fullscreen Button (Embedded) -->
-                <!-- Note: z-40 ensures it's above video but below modals -->
                 <button id="fullscreenBtn"
-                    class="absolute bottom-5 right-5 z-40 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-indigo-600 rounded-lg border border-white/10 backdrop-blur-sm transition-all shadow-lg group-hover/video:opacity-100">
-                    <i id="fullscreenIcon" data-lucide="maximize" class="w-5 h-5 text-white"></i>
+                    class="absolute bottom-6 right-6 z-50 p-2.5 rounded-xl bg-black/60 hover:bg-indigo-600/90 text-white border border-white/10 backdrop-blur-md transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-105 shadow-xl cursor-pointer flex items-center justify-center">
+                    <i id="fullscreenIcon" data-lucide="maximize" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
@@ -675,8 +764,7 @@
 
             // Hide fullscreen button initially in placeholder state
             if (placeholder.style.display !== 'none') {
-                // It relies on CSS default, but let's ensure:
-                // The CSS group-hover handles opacity, but we might want to physically hide it if no video source
+                fullscreenBtn.style.display = 'none';
             }
 
             // --- 3. RE-INIT ICONS ---
