@@ -3604,3 +3604,828 @@ const PERMANENT_BLOCKLIST = new Set([
 "https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=1965",
 "https://rpn.bozztv.com/ebstv/ebscinema/index.m3u8",
 ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>StreamVibe | Cinematic IPTV</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icons & Frameworks -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+    <style>
+        :root {
+            /* NEW PALETTE: Cinematic Ruby & Gold */
+            --primary: #e11d48;
+            /* Rose/Ruby */
+            --secondary: #f59e0b;
+            /* Amber/Gold */
+            --dark: #000000;
+            --glass: rgba(20, 20, 20, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--dark);
+            color: white;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* --- AMBIENT BACKGROUND --- */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #1a0505 0%, #000000 100%);
+            z-index: -2;
+        }
+
+        .ambient-mesh {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 50% 50%, rgba(225, 29, 72, 0.05), transparent 60%);
+            animation: moveMesh 25s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+
+        /* Redesigned Blobs for Warmth */
+        .blob-1 {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(225, 29, 72, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+            filter: blur(60px);
+            animation: float 18s ease-in-out infinite reverse;
+        }
+
+        @keyframes moveMesh {
+            0% {
+                transform: translate(-30px, -30px) scale(1);
+            }
+
+            100% {
+                transform: translate(30px, 30px) scale(1.1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        /* --- GLASS UI --- */
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-right: 1px solid var(--glass-border);
+        }
+
+        /* --- CHANNEL GRID --- */
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 16px;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(30, 30, 30, 0.4) 0%, rgba(10, 10, 10, 0.6) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-radius: 12px !important;
+            height: 140px !important;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .glass-card:hover {
+            background: linear-gradient(180deg, rgba(50, 50, 50, 0.5) 0%, rgba(20, 20, 20, 0.8) 100%) !important;
+            border-color: var(--primary) !important;
+            transform: translateY(-4px) !important;
+            box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.25) !important;
+        }
+
+        /* --- CAROUSEL STYLES --- */
+        .carousel-wrapper {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            width: max-content;
+        }
+
+        .scroll-left-to-right {
+            animation: scrollLTR 60s linear infinite;
+        }
+
+        @keyframes scrollLTR {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .scroll-right-to-left {
+            animation: scrollRTL 60s linear infinite;
+        }
+
+        @keyframes scrollRTL {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .carousel-card {
+            width: 180px;
+            height: 100px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #0f0f0f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Shine Effect on Hover */
+        .carousel-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: skewX(-25deg);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .carousel-card:hover::before {
+            left: 150%;
+        }
+
+        .carousel-card:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(225, 29, 72, 0.3);
+            z-index: 10;
+        }
+
+        .cc-bg {
+            position: absolute;
+            inset: 0;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            filter: grayscale(100%) contrast(1.2);
+            transform: scale(0.7);
+            transition: all 0.4s;
+        }
+
+        .carousel-card:hover .cc-bg {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(0.85);
+        }
+
+        .cc-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        /* --- LOADER --- */
+        #videoLoader {
+            position: absolute;
+            inset: 0;
+            background: #000;
+            z-index: 50;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signal-loader {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .signal-bar {
+            width: 6px;
+            background: var(--primary);
+            border-radius: 4px;
+            animation: equalizer 1s ease-in-out infinite;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .signal-bar:nth-child(1) {
+            height: 20px;
+            animation-delay: 0.0s;
+        }
+
+        .signal-bar:nth-child(2) {
+            height: 35px;
+            animation-delay: 0.1s;
+        }
+
+        .signal-bar:nth-child(3) {
+            height: 50px;
+            animation-delay: 0.2s;
+        }
+
+        .signal-bar:nth-child(4) {
+            height: 35px;
+            animation-delay: 0.1s;
+        }
+
+        .signal-bar:nth-child(5) {
+            height: 20px;
+            animation-delay: 0.0s;
+        }
+
+        @keyframes equalizer {
+
+            0%,
+            100% {
+                transform: scaleY(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scaleY(1.5);
+                opacity: 1;
+                box-shadow: 0 0 25px var(--primary);
+            }
+        }
+
+        /* --- MODAL --- */
+        #politeErrorModal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(225, 29, 72, 0.1);
+        }
+
+        /* --- UTILS --- */
+        #drawer {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(225, 29, 72, 0.6);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #fda4af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 1023px) {
+            #drawer {
+                transform: translateY(calc(100% - 60px));
+            }
+
+            #drawer.open {
+                transform: translateY(0);
+            }
+
+            #fullscreenBtn {
+                opacity: 1 !important;
+                bottom: 20px !important;
+                right: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex flex-col lg:flex-row h-screen w-full">
+
+    <!-- INITIAL LOADING SCREEN -->
+    <div id="loadingOverlay">
+        <div
+            class="w-12 h-12 border-4 border-rose-600 border-t-transparent rounded-full animate-spin mb-4 shadow-[0_0_30px_#e11d48]">
+        </div>
+        <h2 class="text-xl font-bold tracking-[0.3em] animate-pulse text-white">STREAMVIBE</h2>
+        <p id="loadingText" class="text-xs text-stone-400 mt-2 tracking-widest uppercase">System Initializing</p>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div class="ambient-bg"></div>
+    <div class="ambient-mesh"></div>
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+
+    <!-- ================= PLAYER AREA ================= -->
+    <div class="relative flex-1 flex flex-col items-center justify-center p-0 lg:p-6 bg-black/40">
+
+        <!-- HEADER INFO -->
+        <div
+            class="absolute top-0 left-0 right-0 p-4 z-20 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent pointer-events-none">
+            <div class="flex items-center gap-3 pointer-events-auto">
+                <div
+                    class="w-8 h-8 bg-gradient-to-br from-rose-600 to-red-700 rounded-lg flex items-center justify-center shadow-[0_0_20px_rgba(225,29,72,0.4)] border border-white/10 transform rotate-3 hover:rotate-0 transition-transform">
+                    <i data-lucide="clapperboard" class="w-4 h-4 text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-sm font-bold tracking-wider text-white">STREAMVIBE</h1>
+                    <p id="current-channel-name" class="text-[10px] text-rose-400 font-bold uppercase tracking-widest">
+                        Select Channel</p>
+                </div>
+            </div>
+            <div id="statusBadge"
+                class="hidden px-3 py-1 bg-red-500/10 border border-red-500/40 rounded-full text-[10px] text-red-400 font-bold uppercase animate-pulse">
+                OFFLINE
+            </div>
+        </div>
+
+        <!-- VIDEO CONTAINER -->
+        <div
+            class="relative w-full h-full lg:h-[85vh] lg:rounded-2xl overflow-hidden bg-[#000] shadow-[0_0_50px_-20px_rgba(0,0,0,0.8)] ring-1 ring-white/5 group flex flex-col">
+
+            <!-- 1. EMPTY STATE WITH AUTO-SCROLL CAROUSEL & LOTTIE -->
+            <div id="placeholderState" class="absolute inset-0 z-10 flex flex-col overflow-y-auto custom-scroll">
+
+                <!-- Cinematic Background Image -->
+                <div
+                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596727147705-01a298de8ade?q=80')] bg-cover bg-center opacity-20 mix-blend-overlay">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
+
+                <div class="relative z-10 w-full flex flex-col min-h-full">
+
+                    <!-- HERO TEXT -->
+                    <div class="text-center pt-16 pb-8 px-4">
+                        <div
+                            class="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4 backdrop-blur-sm">
+                            <span
+                                class="text-[9px] font-bold text-rose-400 uppercase tracking-[0.2em] flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-rose-500 rounded-full animate-pulse"></span> Live TV
+                            </span>
+                        </div>
+                        <h2
+                            class="text-4xl md:text-5xl font-black text-white tracking-tighter mb-3 gradient-text text-glow">
+                            Cinema Mode
+                        </h2>
+                        <p class="text-sm text-stone-400 max-w-md mx-auto leading-relaxed">Experience streaming in high
+                            fidelity. Select a category to begin.</p>
+                    </div>
+
+                    <!-- ROW 1: FEATURED (Right to Left) -->
+                    <div class="w-full mb-6">
+                        <div class="px-6 mb-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="sparkles" class="w-3 h-3 text-amber-400"></i>
+                                <span class="text-[10px] font-bold text-stone-300 uppercase tracking-widest">Featured
+                                    Channels</span>
+                            </div>
+                        </div>
+                        <div class="carousel-wrapper">
+                            <div class="carousel-track scroll-right-to-left">
+                                <!-- ITEMS -->
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Canal%2B_logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">Canal+</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/HBO_logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">HBO</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/BBC_News_%282022%29.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">BBC
+                                            News</span></div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/de/National_Geographic_Logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">Nat Geo</span>
+                                    </div>
+                                </div>
+                                <!-- LOOP -->
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Canal%2B_logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">Canal+</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/HBO_logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">HBO</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/BBC_News_%282022%29.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">BBC
+                                            News</span></div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/de/National_Geographic_Logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">Nat Geo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROW 2: POPULAR (Left to Right) -->
+                    <div class="w-full mb-8">
+                        <div class="px-6 mb-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="trending-up" class="w-3 h-3 text-rose-500"></i>
+                                <span class="text-[10px] font-bold text-stone-300 uppercase tracking-widest">Trending
+                                    Now</span>
+                            </div>
+                        </div>
+                        <div class="carousel-wrapper">
+                            <div class="carousel-track scroll-left-to-right">
+                                <!-- ITEMS -->
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/36/CNN_International_logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">CNN Int</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/14/ESPN_wordmark.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">ESPN</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b3/Nickelodeon_2009_logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span
+                                            class="font-bold text-xs text-white/90">Nickelodeon</span></div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/77/Discovery_Channel_2019.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span
+                                            class="font-bold text-xs text-white/90">Discovery</span></div>
+                                </div>
+                                <!-- LOOP -->
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/36/CNN_International_logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">CNN Int</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/14/ESPN_wordmark.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span class="font-bold text-xs text-white/90">ESPN</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b3/Nickelodeon_2009_logo.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span
+                                            class="font-bold text-xs text-white/90">Nickelodeon</span></div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="cc-bg"
+                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/77/Discovery_Channel_2019.svg');">
+                                    </div>
+                                    <div class="cc-overlay"><span
+                                            class="font-bold text-xs text-white/90">Discovery</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROW 3: LOTTIE ANIMATION (Takes Remaining Space) -->
+                    <div class="flex-1 w-full flex flex-col items-center justify-center p-6 relative min-h-[300px]">
+                        <!-- Subtle Glow behind Lottie -->
+                        <div class="absolute w-80 h-80 bg-rose-600/10 rounded-full blur-[100px] animate-pulse"></div>
+
+                        <div class="relative z-10 w-full max-w-[400px] h-[300px] flex items-center justify-center">
+                            <!-- Using DotLottie Player for Movie Animation -->
+                            <dotlottie-player
+                                src="https://lottie.host/9e000494-0136-419b-b0b9-111160a2839d/hJ026k5eEa.json"
+                                background="transparent" speed="1" style="width: 100%; height: 100%; opacity: 0.9;" loop
+                                autoplay>
+                            </dotlottie-player>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <h3 class="text-lg font-bold text-white mb-1 tracking-wide">Waiting Lounge</h3>
+                            <p class="text-xs text-stone-500 uppercase tracking-widest">Select a channel to broadcast
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. COOL WAITING LOADER -->
+            <div id="videoLoader">
+                <div class="signal-loader">
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                </div>
+                <h3 class="text-sm font-bold text-white tracking-[0.3em] animate-pulse text-glow">ACQUIRING SIGNAL</h3>
+                <p class="text-[10px] text-stone-400 mt-2 font-mono">BUFFERING_STREAM_DATA...</p>
+            </div>
+
+            <!-- 3. ACTUAL VIDEO WITH EMBEDDED BUTTON -->
+            <div class="relative w-full h-full select-none flex-grow bg-black">
+                <video id="video" class="w-full h-full object-contain relative z-0"></video>
+
+                <button id="fullscreenBtn"
+                    class="absolute bottom-6 right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-rose-600 text-white border border-white/10 backdrop-blur-md transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg cursor-pointer flex items-center justify-center">
+                    <i id="fullscreenIcon" data-lucide="maximize" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= DRAWER / SIDEBAR ================= -->
+    <div id="drawer"
+        class="glass-panel fixed bottom-0 left-0 right-0 h-[70vh] lg:h-full lg:static lg:w-[380px] lg:border-l lg:border-t-0 border-t rounded-t-3xl lg:rounded-none z-50 flex flex-col shadow-[-20px_0_50px_rgba(0,0,0,0.5)]">
+
+        <!-- MOBILE HANDLE -->
+        <div id="drawerHandle"
+            class="lg:hidden w-full h-14 flex flex-col items-center justify-center cursor-pointer hover:bg-white/5 transition-colors absolute top-0 left-0 right-0 z-50 rounded-t-3xl border-b border-white/5 bg-black/90 backdrop-blur-md">
+            <div class="w-12 h-1.5 bg-rose-600 rounded-full mb-1 shadow-[0_0_10px_#e11d48]"></div>
+            <span class="text-[10px] text-stone-400 font-bold uppercase tracking-widest">Channels</span>
+        </div>
+
+        <!-- HEADER -->
+        <div class="pt-16 lg:pt-8 px-6 pb-4 flex flex-col gap-5 bg-gradient-to-b from-black to-transparent">
+            <!-- Search -->
+            <div class="relative group">
+                <i data-lucide="search"
+                    class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-500 group-hover:text-white transition-colors"></i>
+                <input id="search"
+                    class="w-full bg-white/5 border border-white/5 rounded-xl py-3.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-rose-600 focus:bg-black transition-all placeholder:text-stone-600"
+                    placeholder="Find channels...">
+            </div>
+
+            <!-- Stats & Toggles -->
+            <div class="flex items-center justify-between">
+                <span id="channel-count"
+                    class="text-[10px] font-bold tracking-widest text-stone-500 uppercase">Loading...</span>
+
+                <div class="flex items-center gap-3">
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <div
+                            class="w-8 h-4 bg-stone-800 rounded-full relative transition-colors group-hover:bg-stone-700">
+                            <input type="checkbox" id="hideBroken" class="peer sr-only">
+                            <div
+                                class="w-3 h-3 bg-white rounded-full absolute top-0.5 left-0.5 peer-checked:translate-x-4 peer-checked:bg-rose-500 transition-all">
+                            </div>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-stone-500 group-hover:text-white transition-colors">SAFE</span>
+                    </label>
+                    <button id="brokenBtn"
+                        class="p-1.5 rounded-lg bg-white/5 hover:bg-rose-600/20 hover:text-rose-400 text-stone-500 transition-colors">
+                        <i data-lucide="alert-octagon" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIST -->
+        <div id="channels" class="overflow-y-auto px-4 pb-20 lg:pb-6 custom-scroll channel-grid content-start">
+            <!-- Content injected here by app.js -->
+        </div>
+    </div>
+
+    <!-- ================= MODALS ================= -->
+
+    <!-- POLITE ERROR MODAL -->
+    <div id="politeErrorModal">
+        <div class="modal-content">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-rose-600 to-transparent">
+            </div>
+            <div class="relative z-10 flex flex-col items-center">
+                <div
+                    class="w-14 h-14 rounded-full bg-rose-600/10 flex items-center justify-center mb-4 text-rose-500 border border-rose-600/20 shadow-[0_0_20px_rgba(225,29,72,0.2)]">
+                    <i data-lucide="satellite" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Signal Lost</h3>
+                <p class="text-sm text-stone-400 mb-6 leading-relaxed">
+                    We cannot reach this broadcast. It may be offline or restricted in your region.
+                </p>
+                <button id="dismissErrorBtn"
+                    class="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-bold text-white uppercase tracking-[0.2em] transition-all hover:border-white/30">
+                    Select Another
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BROKEN LIST MODAL -->
+    <div id="brokenModal" class="fixed inset-0 bg-black/90 z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-[#0a0a0a] border border-white/10 w-full max-w-sm rounded-2xl p-6 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-white">Issue Log</h3>
+                <button class="closeModal text-stone-500 hover:text-white"><i data-lucide="x"
+                        class="w-5 h-5"></i></button>
+            </div>
+            <div id="brokenList" class="max-h-60 overflow-y-auto space-y-2 custom-scroll"></div>
+        </div>
+    </div>
+
+    <!-- EXTERNAL JS -->
+    <script src="app.js"></script>
+
+    <!-- INTERNAL SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoEl = document.getElementById('video');
+            const loader = document.getElementById('videoLoader');
+            const placeholder = document.getElementById('placeholderState');
+            const politeModal = document.getElementById('politeErrorModal');
+            const dismissBtn = document.getElementById('dismissErrorBtn');
+            const drawer = document.getElementById('drawer');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+            // --- 1. HANDLE LOADER ---
+            videoEl.addEventListener('loadstart', () => {
+                placeholder.style.display = 'none';
+                loader.style.display = 'flex';
+                politeModal.style.display = 'none';
+                fullscreenBtn.style.display = 'flex'; // Show btn when video loading
+            });
+
+            videoEl.addEventListener('waiting', () => {
+                loader.style.display = 'flex';
+            });
+
+            videoEl.addEventListener('playing', () => {
+                loader.style.display = 'none';
+                placeholder.style.display = 'none';
+            });
+
+            // --- 2. HANDLE ERRORS POLITELY ---
+            videoEl.addEventListener('error', (e) => {
+                loader.style.display = 'none';
+                politeModal.style.display = 'flex';
+                fullscreenBtn.style.display = 'none'; // Hide btn on error
+            });
+
+            dismissBtn.addEventListener('click', () => {
+                politeModal.style.display = 'none';
+                placeholder.style.display = 'flex';
+                fullscreenBtn.style.display = 'none'; // Hide btn in placeholder state
+
+                if (window.innerWidth < 1024) {
+                    drawer.style.transform = "translateY(0)";
+                }
+            });
+
+            // Hide fullscreen button initially in placeholder state
+            if (placeholder.style.display !== 'none') {
+                fullscreenBtn.style.display = 'none';
+            }
+
+            // --- 3. RE-INIT ICONS ---
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
