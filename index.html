@@ -34,6 +34,7 @@
             --dark: #031525;
             --panel-bg: rgba(3, 21, 37, 0.85);
             --border-light: rgba(20, 184, 166, 0.15);
+            --drawer-handle-height: 56px;
         }
 
         body {
@@ -43,32 +44,6 @@
             margin: 0;
             overflow: hidden;
             perspective: 1000px;
-        }
-
-        /* --- OCEAN GRADIENT BACKGROUND --- */
-        .ambient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #0c4a6e 0%, #0f766e 25%, #134e4a 50%, #164e63 75%, #1e3a5f 100%);
-            z-index: -2;
-        }
-
-        /* Floating "Wave" Particles */
-        .ambient-mesh {
-            position: absolute;
-            inset: -50%;
-            width: 200%;
-            height: 200%;
-            background-image: radial-gradient(circle, rgba(34, 211, 238, 0.15) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(circle at 50% 50%, black, transparent 70%);
-            animation: drift 80s linear infinite;
-            z-index: -1;
-            opacity: 0.5;
-            transform-style: preserve-3d;
         }
 
         @keyframes drift {
@@ -83,40 +58,6 @@
             100% {
                 transform: rotate(0deg) scale(1) translateY(0);
             }
-        }
-
-        /* Dynamic Blobs (Ocean Lights) */
-        .blob-1 {
-            position: absolute;
-            top: -10%;
-            left: 10%;
-            width: 70vw;
-            height: 70vw;
-            background: radial-gradient(circle, rgba(20, 184, 166, 0.2) 0%, rgba(6, 182, 212, 0.1) 40%, transparent 70%);
-            filter: blur(100px);
-            animation: breathe 12s ease-in-out infinite alternate;
-        }
-
-        .blob-2 {
-            position: absolute;
-            bottom: -30%;
-            right: 5%;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(251, 146, 60, 0.08) 40%, transparent 60%);
-            filter: blur(80px);
-            animation: breathe 18s ease-in-out infinite alternate-reverse;
-        }
-
-        .blob-3 {
-            position: absolute;
-            top: 40%;
-            right: 30%;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(34, 211, 238, 0.1) 0%, transparent 60%);
-            filter: blur(60px);
-            animation: breathe 15s ease-in-out infinite alternate;
         }
 
         @keyframes breathe {
@@ -213,11 +154,11 @@
         }
 
         .scroll-left-to-right {
-            animation: scroll 50s linear infinite;
+            animation: scroll 10s linear infinite;
         }
 
         .scroll-right-to-left {
-            animation: scroll 50s linear infinite reverse;
+            animation: scroll 10s linear infinite reverse;
         }
 
         @keyframes scroll {
@@ -442,7 +383,11 @@
 
         @media (max-width: 1023px) {
             #drawer {
-                transform: translateY(calc(100% - 60px));
+                bottom: 0;
+                top: auto;
+                height: 70vh;
+                transform: translateY(calc(100% - var(--drawer-handle-height)));
+                transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             }
 
             #drawer.open {
@@ -524,13 +469,6 @@
             Cinema Core...</p>
     </div>
 
-    <!-- BACKGROUND -->
-    <div class="ambient-bg"></div>
-    <div class="ambient-mesh"></div>
-    <div class="blob-1"></div>
-    <div class="blob-2"></div>
-    <div class="blob-3"></div>
-
     <!-- ================= PLAYER AREA ================= -->
     <div
         class="relative flex-1 flex flex-col items-center justify-center p-0 lg:p-6 bg-gradient-to-br from-[#031525]/60 to-[#0c4a6e]/40">
@@ -609,73 +547,8 @@
                             </div>
                         </div>
                         <div class="carousel-wrapper">
-                            <div class="carousel-track scroll-right-to-left">
-                                <!-- ITEMS -->
-                                <div class="carousel-card">
-                                    <div class="cc-bg"
-                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Canal%2B_logo.svg');">
-                                    </div>
-                                    <div class="cc-overlay"><span
-                                            class="font-bold text-xs text-white/90 uppercase tracking-wider">Canal+</span>
-                                    </div>
-                                </div>
-                                <div class="carousel-card">
-                                    <div class="cc-bg"
-                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/HBO_logo.svg');">
-                                    </div>
-                                    <div class="cc-overlay"><span
-                                            class="font-bold text-xs text-white/90 uppercase tracking-wider">HBO</span>
-                                    </div>
-                                </div>
-                                <div class="carousel-card">
-                                    <div class="cc-bg"
-                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/BBC_News_%282022%29.svg');">
-                                    </div>
-                                    <div class="cc-overlay"><span
-                                            class="font-bold text-xs text-white/90 uppercase tracking-wider">BBC
-                                            News</span></div>
-                                </div>
-                                <div class="carousel-card">
-                                    <div class="cc-bg"
-                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/de/National_Geographic_Logo.svg');">
-                                    </div>
-                                    <div class="cc-overlay"><span
-                                            class="font-bold text-xs text-white/90 uppercase tracking-wider">Nat
-                                            Geo</span></div>
-                                </div>
-                                <!-- LOOP -->
-                                <div class="carousel-card">
-                                    <div class="cc-bg"
-                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Canal%2B_logo.svg');">
-                                    </div>
-                                    <div class="cc-overlay"><span
-                                            class="font-bold text-xs text-white/90 uppercase tracking-wider">Canal+</span>
-                                    </div>
-                                </div>
-                                <div class="carousel-card">
-                                    <div class="cc-bg"
-                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/HBO_logo.svg');">
-                                    </div>
-                                    <div class="cc-overlay"><span
-                                            class="font-bold text-xs text-white/90 uppercase tracking-wider">HBO</span>
-                                    </div>
-                                </div>
-                                <div class="carousel-card">
-                                    <div class="cc-bg"
-                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/BBC_News_%282022%29.svg');">
-                                    </div>
-                                    <div class="cc-overlay"><span
-                                            class="font-bold text-xs text-white/90 uppercase tracking-wider">BBC
-                                            News</span></div>
-                                </div>
-                                <div class="carousel-card">
-                                    <div class="cc-bg"
-                                        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/de/National_Geographic_Logo.svg');">
-                                    </div>
-                                    <div class="cc-overlay"><span
-                                            class="font-bold text-xs text-white/90 uppercase tracking-wider">Nat
-                                            Geo</span></div>
-                                </div>
+                            <div class="carousel-track scroll-right-to-left" id="featured-track">
+                                <!-- Featured items will be injected here from assets/featured.json -->
                             </div>
                         </div>
                     </div>

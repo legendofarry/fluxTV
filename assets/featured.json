@@ -1,0 +1,22 @@
+[
+  {
+    "name": "BabyShark TV",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Canal%2B_logo.svg",
+    "url": "https://c0c65b821b3542c3a4dca92702f59944.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/RakutenTV-eu_BabySharkTV/playlist.m3u8"
+  },
+  {
+    "name": "HBO",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/0/05/HBO_logo.svg",
+    "url": "https://cs2.push2stream.com/CHANNELSTV-DVR/playlist.m3u8"
+  },
+  {
+    "name": "BBC News",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/22/BBC_News_%282022%29.svg",
+    "url": "https://cmero-ott-live.ssl.cdn.cra.cz/channels/cme-ro-voyo-news/playlist.m3u8?offsetSeconds=0&url=0"
+  },
+  {
+    "name": "BabyShark TV",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/d/de/National_Geographic_Logo.svg",
+    "url": "https://c0c65b821b3542c3a4dca92702f59944.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/RakutenTV-eu_BabySharkTV/playlist.m3u8"
+  }
+]

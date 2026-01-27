@@ -1,5 +1,5 @@
 // ================= CONFIG =================
-const DEV_MODE = false; // false in production
+const DEV_MODE = true; // false in production
 
 // 🔒 PERMANENT HARD BLOCK (NEVER SHOWN, EVER)
 
@@ -3688,6 +3688,8 @@ async function init() {
       setTimeout(() => (loading.style.display = "none"), 2000);
     } else {
       renderChannels();
+      // Render featured carousel (from assets/featured.json)
+      renderFeatured();
       setTimeout(() => {
         loading.style.opacity = "0";
         setTimeout(() => (loading.style.display = "none"), 500);
@@ -3945,6 +3947,37 @@ function playChannel(channel) {
   }
 
   video.play().catch(() => registerError(channel.url));
+}
+
+// ================= FEATURED CAROUSEL =================
+async function renderFeatured() {
+  const track = document.getElementById("featured-track");
+  if (!track) return;
+  try {
+    const res = await fetch("assets/featured.json");
+    if (!res.ok) return;
+    const items = await res.json();
+    track.innerHTML = "";
+    items.forEach((item) => {
+      const card = document.createElement("div");
+      card.className = "carousel-card";
+      card.innerHTML = `
+        <div class="cc-bg" style="background-image: url('${item.logo || ""}');"></div>
+        <div class="cc-overlay"><span class="font-bold text-xs text-white/90 uppercase tracking-wider">${item.name}</span></div>
+      `;
+
+      card.onclick = (e) => {
+        e.stopPropagation();
+        // Build a minimal channel object and play
+        playChannel({ name: item.name, logo: item.logo, url: item.url });
+      };
+
+      track.appendChild(card);
+    });
+    lucide.createIcons();
+  } catch (err) {
+    console.warn("Failed to load featured items", err);
+  }
 }
 
 // ================= ERROR =================
