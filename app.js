@@ -3615,15 +3615,10 @@ const PLAYLISTS = [
     name: "Sports",
     url: "https://iptv-org.github.io/iptv/categories/sports.m3u",
   },
-  { name: "News", url: "https://iptv-org.github.io/iptv/categories/news.m3u" },
   { name: "Kids", url: "https://iptv-org.github.io/iptv/categories/kids.m3u" },
   {
     name: "music",
     url: "https://iptv-org.github.io/iptv/categories/music.m3u",
-  },
-  {
-    name: "Entertainment",
-    url: "https://iptv-org.github.io/iptv/countries/us.m3u",
   },
 ];
 
