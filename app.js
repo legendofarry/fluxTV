@@ -4015,7 +4015,7 @@ function openDrawer() {
 
 function closeDrawer() {
   if (window.innerWidth < 1024) {
-    drawer.style.transform = "translateY(90%)";
+    drawer.style.transform = "translateY(85%)";
   } else {
     drawer.style.transform = "translateY(-40%)";
   }
