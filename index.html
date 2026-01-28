@@ -34,7 +34,6 @@
             --dark: #031525;
             --panel-bg: rgba(3, 21, 37, 0.85);
             --border-light: rgba(20, 184, 166, 0.15);
-            --drawer-handle-height: 56px;
         }
 
         body {
@@ -381,9 +380,7 @@
         @media (max-width: 1023px) {
             #drawer {
                 bottom: 0;
-                top: auto;
-                height: 70vh;
-                transform: translateY(calc(100% - var(--drawer-handle-height)));
+                transform: translateY(90%);
                 transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             }
 
@@ -625,7 +622,7 @@
 
     <!-- ================= DRAWER / SIDEBAR ================= -->
     <div id="drawer"
-        class="glass-panel fixed bottom-[7%] left-0 right-0 h-[70vh] lg:h-full lg:static lg:w-[380px] lg:border-l lg:border-t-0 border-t border-[#14b8a6]/15 rounded-t-3xl lg:rounded-none z-50 flex flex-col shadow-[-50px_0_120px_rgba(0,0,0,0.8),0_0_60px_rgba(20,184,166,0.05)]">
+        class="glass-panel absolute left-0 right-0 h-[100vh] lg:h-full lg:static lg:w-[380px] lg:border-l lg:border-t-0 border-t border-[#14b8a6]/15 rounded-t-3xl lg:rounded-none z-50 flex flex-col shadow-[-50px_0_120px_rgba(0,0,0,0.8),0_0_60px_rgba(20,184,166,0.05)]">
 
         <!-- MOBILE HANDLE -->
         <div id="drawerHandle"
@@ -769,10 +766,6 @@
                 politeModal.style.display = 'none';
                 placeholder.style.display = 'flex';
                 fullscreenBtn.style.display = 'none'; // Hide btn in placeholder state
-
-                if (window.innerWidth < 1024) {
-                    drawer.style.transform = "translateY(0)";
-                }
             });
 
             // Hide fullscreen button initially in placeholder state
