@@ -614,6 +614,17 @@
             <div class="relative w-full h-full select-none flex-grow bg-[#020d18]">
                 <video id="video" class="w-full h-full object-contain relative z-0"></video>
 
+                <!-- Player overlay controls -->
+                <button id="playPauseBtn" title="Play/Pause"
+                    class="absolute bottom-6 left-6 z-50 p-3 rounded-full bg-[#14b8a6]/10 hover:bg-[#14b8a6] text-white border border-[#14b8a6]/30 backdrop-blur-md transition-all duration-300 shadow-[0_0_25px_rgba(20,184,166,0.2)] cursor-pointer flex items-center justify-center">
+                    <i id="playPauseIcon" data-lucide="play" class="w-6 h-6"></i>
+                </button>
+
+                <button id="liveBtn" title="Go Live"
+                    class="absolute bottom-6 left-20 z-50 p-3 rounded-full bg-[#f97316]/10 hover:bg-[#f97316] text-white border border-[#f97316]/30 backdrop-blur-md transition-all duration-300 shadow-[0_0_25px_rgba(249,115,22,0.12)] cursor-pointer flex items-center justify-center opacity-0 pointer-events-none">
+                    <i id="liveIcon" data-lucide="zap" class="w-5 h-5"></i>
+                </button>
+
                 <button id="fullscreenBtn"
                     class="absolute bottom-6 right-6 z-50 p-4 rounded-full bg-[#14b8a6]/10 hover:bg-[#14b8a6] text-white border border-[#14b8a6]/30 backdrop-blur-md transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 shadow-[0_0_25px_rgba(20,184,166,0.2)] cursor-pointer flex items-center justify-center">
                     <i id="fullscreenIcon" data-lucide="maximize" class="w-6 h-6"></i>

@@ -3637,6 +3637,10 @@ const brokenList = document.getElementById("brokenList");
 const closeModalBtn = brokenModal.querySelector(".closeModal");
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 const fullscreenIcon = document.getElementById("fullscreenIcon");
+const playPauseBtn = document.getElementById("playPauseBtn");
+const playPauseIcon = document.getElementById("playPauseIcon");
+const liveBtn = document.getElementById("liveBtn");
+const liveIcon = document.getElementById("liveIcon");
 
 // ================= STATE =================
 let channels = [];
@@ -3645,6 +3649,10 @@ let brokenStreams = new Set(JSON.parse(localStorage.getItem("broken") || "[]"));
 let favorites = new Set(JSON.parse(localStorage.getItem("favorites") || "[]"));
 let hls;
 let drawerOpen = false;
+
+// Playback state
+let currentChannel = null;
+let liveCheckInterval = null;
 
 // ⭐ ADDITIVE STATE (does not affect existing logic)
 let selectedCategory = null;
@@ -3927,11 +3935,14 @@ function renderChannels(filterBroken = false) {
 function playChannel(channel) {
   if (brokenStreams.has(channel.url)) return;
 
+  // Set current channel state
+  currentChannel = channel;
   if (hls) hls.destroy();
   document.getElementById("current-channel-name").textContent = channel.name;
   errorCounts[channel.url] = 0;
 
-  if (Hls.isSupported()) {
+  // Load source
+  if (Hls && Hls.isSupported()) {
     hls = new Hls();
     hls.loadSource(channel.url);
     hls.attachMedia(video);
@@ -3941,8 +3952,92 @@ function playChannel(channel) {
     video.onerror = () => registerError(channel.url);
   }
 
+  // Start playback and update UI
   video.play().catch(() => registerError(channel.url));
+  updatePlayPauseButton();
+  startLiveChecker();
 }
+
+// ================= PLAYER CONTROLS (Play/Pause + Live) =================
+function updatePlayPauseButton() {
+  if (!playPauseIcon) return;
+  if (video.paused || video.ended) {
+    playPauseIcon.setAttribute("data-lucide", "play");
+  } else {
+    playPauseIcon.setAttribute("data-lucide", "pause");
+  }
+  lucide.createIcons();
+}
+
+function togglePlayPause() {
+  if (video.paused) {
+    video.play().catch(() => registerError(currentChannel?.url));
+  } else {
+    video.pause();
+  }
+  updatePlayPauseButton();
+}
+
+function updateLiveButtonVisibility() {
+  if (!liveBtn) return;
+  // Hide by default
+  liveBtn.classList.add("opacity-0");
+  liveBtn.classList.add("pointer-events-none");
+
+  try {
+    const seekable = video.seekable;
+    if (seekable && seekable.length) {
+      const liveEdge = seekable.end(seekable.length - 1);
+      const distance = liveEdge - video.currentTime;
+      // Show "Live" if we're more than 5s behind live edge
+      if (distance > 5) {
+        liveBtn.classList.remove("opacity-0");
+        liveBtn.classList.remove("pointer-events-none");
+      }
+    }
+  } catch (e) {
+    // ignore
+  }
+}
+
+function goToLive() {
+  try {
+    const seekable = video.seekable;
+    if (seekable && seekable.length) {
+      const liveEdge = seekable.end(seekable.length - 1);
+      // jump very near live edge and resume
+      video.currentTime = Math.max(0, liveEdge - 0.5);
+      video.play().catch(() => registerError(currentChannel?.url));
+      updateLiveButtonVisibility();
+      updatePlayPauseButton();
+    }
+  } catch (e) {
+    // ignore
+  }
+}
+
+function startLiveChecker() {
+  stopLiveChecker();
+  updateLiveButtonVisibility();
+  liveCheckInterval = setInterval(updateLiveButtonVisibility, 1000);
+}
+
+function stopLiveChecker() {
+  if (liveCheckInterval) {
+    clearInterval(liveCheckInterval);
+    liveCheckInterval = null;
+  }
+}
+
+// Wire up UI events
+if (playPauseBtn) playPauseBtn.onclick = togglePlayPause;
+if (liveBtn) liveBtn.onclick = goToLive;
+video.addEventListener("play", updatePlayPauseButton);
+video.addEventListener("pause", updatePlayPauseButton);
+video.addEventListener("timeupdate", updateLiveButtonVisibility);
+video.addEventListener("seeked", updateLiveButtonVisibility);
+video.addEventListener("seeking", updateLiveButtonVisibility);
+video.addEventListener("ended", updatePlayPauseButton);
 
 // ================= FEATURED CAROUSEL =================
 async function renderFeatured() {
