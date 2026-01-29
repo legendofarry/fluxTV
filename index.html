@@ -388,11 +388,26 @@
                 transform: translateY(0);
             }
 
-            #fullscreenBtn {
+            /* Ensure overlay controls are visible on mobile/touch devices */
+            #fullscreenBtn,
+            #playPauseBtn,
+            #liveBtn {
                 opacity: 1 !important;
-                bottom: 20px !important;
-                right: 20px !important;
+                top: 58%;
+                height: fit-content;
                 z-index: 99999;
+            }
+
+            #fullscreenBtn {
+                right: 20px !important;
+            }
+
+            #playPauseBtn {
+                left: 20px !important;
+            }
+
+            #liveBtn {
+                left: 92px !important;
             }
         }
 
@@ -750,13 +765,18 @@
             const dismissBtn = document.getElementById('dismissErrorBtn');
             const drawer = document.getElementById('drawer');
             const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const liveBtn = document.getElementById('liveBtn');
 
             // --- 1. HANDLE LOADER ---
             videoEl.addEventListener('loadstart', () => {
                 placeholder.style.display = 'none';
                 loader.style.display = 'flex';
                 politeModal.style.display = 'none';
-                fullscreenBtn.style.display = 'flex'; // Show btn when video loading
+                // Show overlay controls when video starts loading
+                fullscreenBtn && (fullscreenBtn.style.display = 'flex');
+                playPauseBtn && (playPauseBtn.style.display = 'flex');
+                liveBtn && (liveBtn.style.display = 'flex');
             });
 
             videoEl.addEventListener('waiting', () => {
@@ -772,18 +792,24 @@
             videoEl.addEventListener('error', (e) => {
                 loader.style.display = 'none';
                 politeModal.style.display = 'flex';
-                fullscreenBtn.style.display = 'none'; // Hide btn on error
+                fullscreenBtn && (fullscreenBtn.style.display = 'none'); // Hide btn on error
+                playPauseBtn && (playPauseBtn.style.display = 'none');
+                liveBtn && (liveBtn.style.display = 'none');
             });
 
             dismissBtn.addEventListener('click', () => {
                 politeModal.style.display = 'none';
                 placeholder.style.display = 'flex';
-                fullscreenBtn.style.display = 'none'; // Hide btn in placeholder state
+                fullscreenBtn && (fullscreenBtn.style.display = 'none'); // Hide btn in placeholder state
+                playPauseBtn && (playPauseBtn.style.display = 'none');
+                liveBtn && (liveBtn.style.display = 'none');
             });
 
             // Hide fullscreen button initially in placeholder state
             if (placeholder.style.display !== 'none') {
-                fullscreenBtn.style.display = 'none';
+                fullscreenBtn && (fullscreenBtn.style.display = 'none');
+                playPauseBtn && (playPauseBtn.style.display = 'none');
+                liveBtn && (liveBtn.style.display = 'none');
             }
 
             // --- 3. RE-INIT ICONS ---
