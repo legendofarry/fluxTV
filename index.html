@@ -108,6 +108,27 @@
             box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(20, 184, 166, 0.05);
         }
 
+        /* --- FIX FOR DEV MODE CHECKBOXES --- */
+        /* Positions the checkbox in the top right and ensures it is above the click layer */
+        .glass-card input[type="checkbox"] {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            z-index: 99999 !important;
+            /* Ensure it sits on top of everything */
+            cursor: pointer;
+            accent-color: var(--accent);
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+
+        .glass-card input[type="checkbox"]:hover {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
         .glass-card:hover {
             transform: translateY(-8px) scale(1.02) rotateX(5deg) !important;
             background: linear-gradient(145deg, rgba(34, 211, 238, 0.15) 0%, rgba(20, 184, 166, 0.1) 50%, rgba(3, 21, 37, 0.8) 100%) !important;
@@ -812,7 +833,34 @@
                 liveBtn && (liveBtn.style.display = 'none');
             }
 
-            // --- 3. RE-INIT ICONS ---
+            // --- 3. FIX FOR DYNAMIC CHECKBOX CLICKS (Stop Play Event) ---
+            // This monitors the channel grid for new items and ensures checkboxes 
+            // do not trigger the parent card's click event.
+            const channelContainer = document.getElementById('channels');
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    mutation.addedNodes.forEach((node) => {
+                        if (node.nodeType === 1) { // Element
+                            const checkboxes = node.querySelectorAll ? node.querySelectorAll('input[type="checkbox"]') : [];
+                            checkboxes.forEach(cb => {
+                                cb.addEventListener('click', (e) => {
+                                    e.stopPropagation(); // Stops the card from playing
+                                });
+                            });
+                            // Also check if the node itself is the checkbox
+                            if (node.tagName === 'INPUT' && node.type === 'checkbox') {
+                                node.addEventListener('click', (e) => e.stopPropagation());
+                            }
+                        }
+                    });
+                });
+            });
+            // Start observing the channels container for added items
+            if (channelContainer) {
+                observer.observe(channelContainer, { childList: true, subtree: true });
+            }
+
+            // --- 4. RE-INIT ICONS ---
             lucide.createIcons();
         });
     </script>
