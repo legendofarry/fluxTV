@@ -1,5 +1,5 @@
 // ================= CONFIG =================
-const DEV_MODE = true; // false in production
+const DEV_MODE = false; // false in production
 
 // 🔒 PERMANENT HARD BLOCK (NEVER SHOWN, EVER)
 
@@ -3709,6 +3709,20 @@ const PLAYLISTS = [
     name: "music",
     url: "https://iptv-org.github.io/iptv/categories/music.m3u",
   },
+  {
+    name: "Documentaries",
+    url: "",
+  },
+];
+
+// Manual channels that aren't fetched from remote playlists
+const MANUAL_CHANNELS = [
+  {
+    name: "CRIME",
+    logo: "",
+    url: "https://94a3e237.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWV1X0NyaW1lMzYwX0hMUw/playlist.m3u8",
+    category: "Documentaries",
+  },
 ];
 
 // ================= DOM =================
@@ -3760,8 +3774,25 @@ async function init() {
 
     loadingText.textContent = "Connecting to Satellite...";
 
+    // Ensure there's a category bucket for every playlist (even if no URL provided)
+    PLAYLISTS.forEach((p) => {
+      if (!categories[p.name]) categories[p.name] = [];
+    });
+
+    // Register any manual channels into their categories
+    MANUAL_CHANNELS.forEach((m) => {
+      // avoid duplicates
+      if (!channels.find((c) => c.url === m.url)) {
+        channels.push(m);
+        if (!categories[m.category]) categories[m.category] = [];
+        categories[m.category].push(m);
+      }
+    });
+
     await Promise.all(
       PLAYLISTS.map(async (p) => {
+        // Skip fetching when no URL is provided (user will add channels manually)
+        if (!p.url) return;
         try {
           const res = await fetch(p.url);
           if (!res.ok) throw new Error("Failed");
