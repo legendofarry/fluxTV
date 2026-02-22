@@ -18,5 +18,10 @@
     "name": "Trace TV",
     "logo": "/assets/trace.png",
     "url": "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/trace-uk/encrypted.m3u8"
+  },
+  {
+    "name": "TMZ",
+    "logo": "",
+    "url": "https://aegis-cloudfront-1.tubi.video/57c1fa3c-566b-4998-b6de-d6de67031d99/index.m3u8"
   }
 ]

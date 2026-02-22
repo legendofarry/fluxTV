@@ -3723,6 +3723,30 @@ const MANUAL_CHANNELS = [
     url: "https://94a3e237.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWV1X0NyaW1lMzYwX0hMUw/playlist.m3u8",
     category: "Documentaries",
   },
+  {
+    name: "Docu+",
+    logo: "",
+    url: "https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8",
+    category: "Documentaries",
+  },
+  {
+    name: "TMZ",
+    logo: "",
+    url: "https://aegis-cloudfront-1.tubi.video/57c1fa3c-566b-4998-b6de-d6de67031d99/index.m3u8",
+    category: "Documentaries",
+  },
+  {
+    name: "AMC reality",
+    logo: "",
+    url: "https://amc-absolutereality-1-us.plex.wurl.tv/playlist.m3u8",
+    category: "Documentaries",
+  },
+  {
+    name: "BBC America",
+    logo: "",
+    url: "https://bcovlive-a.akamaihd.net/7f5ec16d102f4b5d92e8e27bc95ff424/us-east-1/6240731308001/playlist.m3u8",
+    category: "Documentaries",
+  },
 ];
 
 // ================= DOM =================
